@@ -1,0 +1,78 @@
+body{
+    font-family: 'Roboto Slab', serif;
+    background-color: #f1f3f6;
+}
+
+
+/*Navigation bar*/
+.brand{
+    color: white;
+    padding-left: 1%;
+}
+
+.policeLogo{
+    height: 6%;
+    width: 6%;
+}
+
+.navbar{
+    padding: 0 4%;
+    padding-left: 0!important;
+    
+}
+
+#navigation{
+    padding: 1% 4%;
+    background-color: rgba(27,81,140,1);
+}
+
+.menu-list{
+    color: white;
+    padding: 1%
+}
+
+
+/*allotment form*/
+.allotment{
+    padding: 4% 18%;
+}
+
+.allot{
+    padding: 1% 0;
+}
+
+.card{
+    padding: 2%;
+}
+
+
+/*Footer css*/
+footer{
+    background-color: #172337;                 /*#364f6b;*/
+    color: white;
+}
+
+.footer-content{
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.social-icon{
+    color: white;
+}
+
+.map-responsive{
+    margin-top: 2%;
+    position: relative;
+    padding-bottom: 75%; 
+    height: 0;
+    overflow: hidden;
+}
+
+.map-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}

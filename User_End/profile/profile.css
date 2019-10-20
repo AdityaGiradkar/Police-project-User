@@ -1,0 +1,14 @@
+.profile-text{
+    font-family: 'Roboto Slab', serif;
+}
+
+
+.profile-img{
+   border-radius: 5%;
+    display: block;
+    margin: auto;
+}
+
+.row-custom{
+    padding-bottom: 2%;
+}
