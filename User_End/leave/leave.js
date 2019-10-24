@@ -15,7 +15,7 @@ function submitFun(){
 }
 
 //cancel function
-var can = document.getElementById("cancel")
+var can = document.getElementById("cancel");
 cancel.addEventListener("click", cancelFun);
 
 function cancelFun()
@@ -30,3 +30,18 @@ function cancelFun()
         //how??????????????????????????? without changing the current inputs
     }
 }
+
+
+//show the Available quarter in city functions
+ function showQuarter($city) {
+     if($city != 0)
+         {
+             alert($city);
+             document.getElementById('quarterList').style.display = "block";
+         }
+     else
+         {
+             document.getElementById('quarterList').style.display = "none";
+         }
+            
+        }
