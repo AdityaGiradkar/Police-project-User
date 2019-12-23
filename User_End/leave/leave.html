@@ -28,14 +28,14 @@
 <body>
     <!--Form Body-->
     <div class="container allotment">
-        <form id="form-action" action="">
+        <form id="form-action" onsubmit="return validate()" action="../profile/profile.html" >
             <h2 class="form-heading" style="text-align: center; padding-bottom: 4%">Leave Form</h2>
             <hr>
 
             <div class="form-group allot">
                 <label for="currentPosition"><b>Current City</b></label>
-                <select class="form-control" onchange = "showQuarter(value)">
-                    <option value=0>select</option>
+                <select class="form-control conf" id = "city-options" onchange = "showQuarter(value)">
+                    <option value="">select</option>
                     <option>Pune</option>
                     <option>Nagpur</option>
                     <option>All available city</option>
@@ -44,8 +44,8 @@
 
             <div class="form-group allot" style="display: none;" id="quarterList">
                 <label for="currentQuarter"><b>Select quarter</b></label>
-                <select class="form-control">
-                    <option>Select</option>
+                <select class="form-control conf">
+                    <option value="">Select</option>
                     <option>quarter 1</option>
                     <option>quarter 2</option>
                     <option>list of available quarter in city</option>
@@ -56,14 +56,14 @@
                 <div class="col-md-6">
                     <div class="form-group allot">
                         <label for="electricityBill"><b>Paid electricity bill</b></label>
-                        <input type="file" class="form-control-file" name="electricity" id="OfficialLetter" required>
+                        <input type="file" class="form-control-file conf" name="electricity" id="electricityBill">
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group allot">
                         <label for="leaveLetter"><b>Leave letter</b></label>
-                        <input type="file" class="form-control-file" name="leave" id="OfficialLetter" required>
+                        <input type="file" class="form-control-file conf" name="leave" id="OfficialLetter">
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
 
             <div style="text-align: center" class="allot buttons">
                 <input class="btn btn-primary active" type="submit" id="sub" name="submit" value="submit">
-                <a class="btn btn-danger active" style="margin-left: 25%;" type="submit" id="cancel" href="" name="cancel">Cancel</a>
+                <a class="btn btn-danger active" style="margin-left: 25%;" type="button" id="cancel" href="../profile/profile.html" name="cancel" onclick="return cancelFun()">Cancel</a>
             </div>
 
 
@@ -82,7 +82,7 @@
 
 
 
-    <script src="leave.js"></script>
+    <script src="leave1.js"></script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -71,21 +71,22 @@
 
     <!--Form Body-->
     <div class="container allotment">
-        <form action="" id="form-action">
+        <form action="../profile/profile.html" onsubmit="return validate()" id="form-action">
             <h2 class="form-heading" style="text-align: center; padding-bottom: 4%">Allotment Form</h2>
             <hr>
 
             <!--selection of city, after selection call function showPrefrence()-->
             <div class="form-group allot">
                 <label><b>Posting City</b></label>
-                <select class="form-control" onchange="showPrefrence(value)">
-                    <option value="0">Select</option>
+                <select class="form-control conf" id="city-options" onchange="showPrefrence(value)">
+                    <option value="">Select</option>
                     <option>Nagpur</option>
                     <option>pune</option>
                     <option>Chandrapur</option>
                     <option>Akola</option>
                     <option>Kolhapur</option>
                 </select>
+                <small style="color: red; display: none;">Please select approprate city.</small>
             </div>
             <div style="display: none;" id="prefrences">
                 <div class="row" style="padding-left: 5%; padding-right: 0; ">
@@ -146,7 +147,7 @@
 
             <div class="form-group allot">
                 <label for="OfficialLetter"><b>Official Letter</b></label>
-                <input type="file" class="form-control-file" name="transfer" id="OfficialLetter" required>
+                <input type="file" class="form-control-file conf" name="transfer" id="OfficialLetter" >
             </div>
 
             <div class="form-group allot">
@@ -155,7 +156,7 @@
             </div>
             <div style="text-align: center">
                 <input class="btn btn-primary active" type="submit" id="sub" name="submit" value="submit">
-                <a class="btn btn-danger active" style="margin-left: 25%;" type="submit" id="cancel" href = "" name="cancel">Cancel</a>
+                <a class="btn btn-danger active" style="margin-left: 25%;" id="cancel" onclick="return cancelFun()" type="button" href = "../profile/profile.html" name="cancel">Cancel</a>
             </div>
         </form>
     </div>
@@ -211,7 +212,7 @@
 
 
     <!--external js file link-->
-    <script src="allotment.js"></script>
+    <script src="allotment1.js"></script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

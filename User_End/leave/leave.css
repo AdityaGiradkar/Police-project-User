@@ -13,3 +13,8 @@
 .allot .buttons{
     padding: 25% 25%;
 }
+
+/*Error, css change for box*/
+.Box-error{
+    border: 2px solid red;
+}

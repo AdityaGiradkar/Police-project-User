@@ -76,3 +76,10 @@ footer{
     width: 100% !important;
     height: 100% !important;
 }
+
+
+
+/*Error css change for box*/
+.Box-error{
+    border: 2px solid red;
+}

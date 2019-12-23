@@ -20,42 +20,7 @@ function validate()
         return true;
     else
         return false;
-    
 }
-    /*
-    if(confirmCity.value == 0 && confirmLetter.value == "")
-        {
-            confirmCity.classList.add("Box-error");
-            confirmLetter.classList.add("Box-error");
-            return false;
-        }
-    else if(confirmCity.value == 0)
-        {
-            confirmLetter.classList.remove("Box-error");
-            confirmCity.classList.add("Box-error");
-            return false;
-        }
-    else if(confirmLetter.value == "")
-        {
-            confirmCity.classList.remove("Box-error");
-            confirmLetter.classList.add("Box-error");
-            return false;
-        }
-    else
-        {
-            var conformation = confirm("Do you want to submit");
-            if(conformation)
-                {
-                    return true;      
-                }
-            else
-                {
-                    return false;
-                }
-        }
-}
-
-*/
 
 //show the prefrences functions
  function showPrefrence($city) {
@@ -70,7 +35,6 @@ function validate()
          }
             
     }
-
 
 //cancel function
 function cancelFun()
