@@ -1,0 +1,148 @@
+<! DOCTYPE HTML>
+    <html>
+
+    <head>
+        <title>
+            history
+        </title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+        <!--External css-->
+        <link rel="stylesheet" href="style.css">
+
+        <!--global css-->
+        <link rel="stylesheet" href="../user.css">
+
+        <!--font-->
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="d-flex" id="wrapper">
+            <div class="bg-light border-right" id="sidebar-wrapper">
+                <div class="sidebar-heading" style="padding-top: 15%; padding-bottom: 5%;">
+                    <center>
+                        <h3>Dashboard</h3>
+                    </center>
+                </div>
+                <hr>
+                <div class="list-group list-group-flush container  green borderXwidth">
+                <a href="../waiting_list/waiting.html" class="custom-list">Quater availability</a>
+                <a href="../leave/leave.html" class="custom-list">Leave form</a>
+                <a href="../Allotment/allotment.html" class="custom-list">Allotment Form</a>
+                <a href="../history/history.html" class="custom-list">History</a>
+                <a href="#" class="custom-list">Setting</a>
+                <a href="../../index.html" class="custom-list">Logout</a>
+                </div>
+            </div>
+
+            <div id="page-content-wrapper">
+
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <span class="navbar-toggler-icon" id="menu-toggle"></span>
+                    <div class="brand">
+                        <a class="navbar-brand " href="index.html">
+                            <img src="../images/logo.png" width="80" height="80" class="d-inline-block align-top" alt="">
+                        </a>
+                    </div>
+                </nav>
+
+                <br>
+
+                <!--main body -->
+                <div>
+                    <div class="heading">
+                        <h4>
+                            HISTORY
+                        </h4>
+
+                    </div>
+                    <br>
+
+                    <div class="container">
+                        <div class="list-group heading">
+                            <a href="#" class="list-group-item list-group-item-action" onclick="openModal()">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class=" mb-1">Pune</h5>
+                                    <span class=" badge-primary badge-pill tablet-padding">1 day ago</span>
+                                </div>
+                                <h5>
+                                    <p class="mb-1">Your application for quarter allotment has been approved on 15/10/2019 </p>
+                                    <small>Shivaji Nagar</small>
+                                </h5>
+                            </a>
+
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Nagpur</h5>
+                                    <span class=" badge-primary badge-pill tablet-padding">3 years ago</span>
+                                </div>
+                                <h5>
+                                    <p class="mb-1">Your application for quarter allotment has been disapproved at desk A5.</p>
+                                    <small class="text-muted">Bardi</small>
+                                </h5>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Nashik</h5>
+                                    <span class=" badge-primary badge-pill tablet-padding">7 years ago</span>
+                                </div>
+                                <h5>
+                                    <p class="mb-1">Your application for quarter allotment has been approved on 15/10/2013</p>
+                                    <small class="text-muted">Panchavati</small>
+                                </h5>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--pop up modal class-->
+        <div id="simpleModal" class="modal">
+            <div class="modal-content">
+                <div>
+                    <span class="closeBtn" onclick="closeModal()">&times;</span>
+                </div>
+                <p>Hello Harshad</p>
+                <p>Your application for quarter allotment has been submited.</p>
+                <p>You are applying for the quarter of Pune from Nagpur</p>
+                <p>We will notify you when your application will be approved.</p>
+                <div class="row" style="text-align: center;">
+                    <div class="col-lg-4 sm-12">
+                        <button type="button" class="btn btn-info btn-arrow-right">Submitted</button>
+                    </div>
+                    <div class="col-lg-4 sm-12">
+                        <button type="button" class="btn btn-info btn-arrow-right" style="background-color: white; color: black;">Processing</button>
+                    </div>
+                    <div class="col-lg-4 sm-12">
+                        <button type="button" class="btn btn-info btn-arrow-right" style="background-color: white; color: black;">Approved</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+        <!--gobal js file link-->
+        <script src="../user.js"></script>
+
+        <!--External js-->
+        <script type="text/javascript" src="function.js"></script>
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+
+    </html>

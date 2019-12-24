@@ -4,33 +4,6 @@ body{
 }
 
 
-/*Navigation bar*/
-.brand{
-    color: white;
-    padding-left: 1%;
-}
-
-.policeLogo{
-    height: 6%;
-    width: 6%;
-}
-
-.navbar{
-    padding: 0 4%;
-    padding-left: 0!important;
-    
-}
-
-#navigation{
-    padding: 1% 4%;
-    background-color: rgba(27,81,140,1);
-}
-
-.menu-list{
-    color: white;
-    padding: 1%
-}
-
 
 /*allotment form*/
 .allotment{

@@ -1,0 +1,18 @@
+.list-group-item
+{
+	border: 0px;
+	padding: 0px 0px 5px 0px;
+}
+.container
+{
+	background-color: #f4f3f3;
+	padding-top: 11px;
+}
+.list-group-item
+{
+	background-color: #f4f3f3;
+}
+.custom-select
+{
+	background-size: 0px
+}
