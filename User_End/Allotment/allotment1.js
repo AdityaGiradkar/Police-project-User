@@ -27,7 +27,8 @@ function validate()
      if($city != 0)
          {
              alert($city);
-             document.getElementById('prefrences').style.display = "block";
+			  window.location.href="allotment.php?city="+$city;
+             
          }
      else
          {

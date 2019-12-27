@@ -87,14 +87,14 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="User_End/profile/profile.html">
+                    <form action="login/login2.php" method="post">
                         <div class="form-group">
                             <label for="InputEmail" style="text-align: left;"><b>User name</b></label>
-                            <input type="email" class="form-control" id="InputEmail" placeholder="Enter email (xyz@gmail.com)" required>
+                            <input type="text" class="form-control" name="username" id="InputEmail" placeholder="Enter email (xyz@gmail.com)" required>
                         </div>
                         <div class="form-group">
                             <label for="InputPassword"><b>Password</b></label>
-                            <input type="password" class="form-control" id="InputPassword" placeholder="Password" required>
+                            <input type="password" class="form-control" id="InputPassword" name="password" placeholder="Password" required>
                         </div>
                         <input class="btn btn-primary active" type="submit" name="submit" value="LogIn">
                     </form>
