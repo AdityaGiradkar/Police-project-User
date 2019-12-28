@@ -1,7 +1,7 @@
-function validate()
+/*function validate()
 {
-    var confirmCity = document.getElementById("city-options");
-    var confirmLetter = document.getElementById("OfficialLetter");
+    //var confirmCity = document.getElementById("city-options");
+    //var confirmLetter = document.getElementById("OfficialLetter");
     var tp = document.getElementsByClassName("conf");
     var flag=0;
     for(var i=0;i<tp.length;i++)
@@ -21,10 +21,10 @@ function validate()
     else
         return false;
 }
-
+*/
 //show the prefrences functions
  function showPrefrence($city) {
-     if($city != 0)
+     if($city != "")
          {
              alert($city);
 			  window.location.href="allotment.php?city="+$city;
@@ -38,8 +38,8 @@ function validate()
     }
 
 //cancel function
-function cancelFun()
+/*function cancelFun()
 {
     var conformation = confirm("Data may lost.");
     return conformation;
-}
+}*/

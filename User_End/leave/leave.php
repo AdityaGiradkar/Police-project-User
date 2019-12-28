@@ -25,84 +25,54 @@ if(isset($_SESSION['user_id'])){ ?>
 
     <title>leave</title>
 
+    <!--fontawsome link-->
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js//all.js"></script>
-	    <script type="text/javascript" src="leave.js"></script>
-	<script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 
-	</head>
+</head>
+
 <body>
-	 <div class="d-flex" id="wrapper">
-        <div class="bg-light border-right" id="sidebar-wrapper">
-            <!--<div class="sidebar-heading"> </div>
-            <div class="sidebar-heading"> </div>-->
-            <div class="sidebar-heading" style="padding-top: 15%; padding-bottom: 5%;">
-                <center>
-                    <h3>Dashboard</h3>
-                </center>
-            </div>
-            <hr>
-            <div class="list-group list-group-flush container  green borderXwidth">
-                <a href="../waiting_list/waiting.html" class="custom-list">Quater availability</a>
-                <a href="../leave/leave.php" class="custom-list">Leave form</a>
-                <a href="../Allotment/allotment.php" class="custom-list">Allotment Form</a>
-                <a href="../history/history.php" class="custom-list">History</a>
-                <a href="#" class="custom-list">Setting</a>
-                <a href="../../login/logout.php" class="custom-list">Logout</a>
-            </div>
-        </div>
-
-        <div id="page-content-wrapper">
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                <span class="navbar-toggler-icon" id="menu-toggle"></span>
-                <div class="brand">
-                    <a class="navbar-brand " href="index.html">
-                        <img src="../images/logo.png" width="80" height="80" class="d-inline-block align-top" alt="">
-                    </a>
-                </div>
-            </nav>
-
-
+    <!--sidebar-->
+    <?php include("../sidebar.php")?>
 
     <!--Form Body-->
-    <div class="container allotment">
-        <form id="form-action" action="leave.php" method="post" enctype="multipart/form-data">
-        <form id="form-action" action="leave.php" method="post" enctype="multipart/form-data">
-            <h2 class="form-heading" style="text-align: center; padding-bottom: 4%">Leave Form</h2>
-            <hr>
+    <div id="main">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()" id="main-content">&#9776; open</span>
+        <div class="container allotment">
+            <form id="form-action" action="leave.php" method="post" onsubmit="return validate()" enctype="multipart/form-data">
+                <h2 class="form-heading" style="text-align: center; padding-bottom: 4%">Leave Form</h2>
+                <hr>
 
-            <div class="form-group allot">
-                <label for="currentPosition"><b>Current City</b></label>
-                <select class="form-control" name="City" id="city" onchange="showQuarter(value)">
-                    <option value=0>select</option>
-                    <?php
+                <div class="form-group allot">
+                    <label for="currentPosition"><b>Current City</b></label>
+                    <select class="form-control conf" name="City" id="city" onchange="showQuarter(value)">
+                        <option value="">select</option>
+                        <?php
                     include("../../db.php");
                     $qry="SELECT * FROM `cities` WHERE 1";
                     $run=mysqli_query($con,$qry);
                     while($row=mysqli_fetch_assoc($run)){
 						if(isset($_GET['city'])){
                         ?>
-					
-                    <option value="<?php echo $row['name']; ?>" <?php if($_GET['city']==$row['name']){ ?>  selected <?php } ?> ><?php echo $row['name']; ?></option>
-                   <?php
+
+                        <option value="<?php echo $row['name']; ?>" <?php if($_GET['city']==$row['name']){ ?> selected <?php } ?>><?php echo $row['name']; ?></option>
+                        <?php
 						}
 						else{ ?>
-						
-						<option value="<?php echo $row['name']; ?>"><?php echo $row['name']; ?></option>
-				<?php		}
+
+                        <option value="<?php echo $row['name']; ?>"><?php echo $row['name']; ?></option>
+                        <?php		}
 					} 
 					?>
-                </select>
-				
-            </div>
+                    </select>
 
-		
-            <div class="form-group allot" <?php if(isset($_GET['city'])){ ?>style="display: block;"<?php } else { ?> style="display: none;" <?php } ?>id="quarterList">
-                <label for="currentQuarter"><b>Select quarter</b></label>
-                <select class="form-control" id="quater" name="quater">
-					<option value=0>select</option>					
-					<?php if(isset($_GET['city'])){
+                </div>
+
+
+                <div class="form-group allot" <?php if(isset($_GET['city'])){ ?>style="display: block;" <?php } else { ?> style="display: none;" <?php } ?>id="quarterList">
+                    <label for="currentQuarter"><b>Select quarter</b></label>
+                    <select class="form-control conf" id="quater" name="quater">
+                        <option value="">select</option>
+                        <?php if(isset($_GET['city'])){
 				$city=$_GET['city'];
 				$qry="SELECT * FROM `cities` WHERE  `name`='$city'";
 				$run=mysqli_query($con,$qry);
@@ -116,48 +86,49 @@ if(isset($_SESSION['user_id'])){ ?>
 					$run2=mysqli_query($con,$qry2);
 					while($row2=mysqli_fetch_assoc($run2)){
 					?>
-					<option ><?php echo $row2['name']; ?></option>
-			<?php }
+                        <option><?php echo $row2['name']; ?></option>
+                        <?php }
 				}
 } else
-{ ?>				
-                    <option>Please select city first</option>
-                    
-            <?php } ?>       
-                </select>
-            </div>
-		
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group allot">
-                        <label for="electricityBill"><b>Paid electricity bill</b></label>
-                        <input type="file" class="form-control-file" name="electricity" id="OfficialLetter" required>
+{ ?>
+                        <option>Please select city first</option>
+
+                        <?php } ?>
+                    </select>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group allot">
+                            <label for="electricityBill"><b>Paid electricity bill</b></label>
+                            <input type="file" class="form-control-file conf" name="electricity" id="OfficialLetter">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group allot">
+                            <label for="leaveLetter"><b>Leave letter</b></label>
+                            <input type="file" class="form-control-file conf" name="leave" id="leaveLetter">
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-md-6">
-                    <div class="form-group allot">
-                        <label for="leaveLetter"><b>Leave letter</b></label>
-                        <input type="file" class="form-control-file" name="leave" id="OfficialLetter" required>
-                    </div>
+
+                <div style="text-align: center" class="allot buttons">
+                    <input class="btn btn-primary active" type="submit" id="sub" name="submit" value="submit">
+                    <a class="btn btn-danger active" style="margin-left: 25%;" type="submit" id="cancel" href="../profile/profile.php" name="cancel" onclick="return cancelFun()">Cancel</a>
                 </div>
-            </div>
 
 
-            <div style="text-align: center" class="allot buttons">
-                <input class="btn btn-primary active" type="submit" id="sub" name="submit" value="submit">
-                <a class="btn btn-danger active" style="margin-left: 25%;" type="submit" id="cancel" href="leave.php" name="cancel">Cancel</a>
-            </div>
-
-
-        </form>
+            </form>
+        </div>
     </div>
 
 
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
     <script src="../user.js"></script>
-   
+
     <!--js for leave page-->
     <script src="leave1.js"></script>
 
@@ -169,8 +140,9 @@ if(isset($_SESSION['user_id'])){ ?>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </body>
+
 </html>
-		 <?php }
+<?php }
 else
 	echo "<script>alert('please login')</script>";
 

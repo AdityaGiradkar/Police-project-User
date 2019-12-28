@@ -1,9 +1,9 @@
 
 	var modal = document.getElementById('simpleModal');
 
-	var modalBtn = document.getElementById('modalBtn');
+	//var modalBtn = document.getElementById('modalBtn');
 
-	var closeBtn = document.getElementByClassName('closeBtn')[0];
+	//var closeBtn = document.getElementByClassName('closeBtn')[0];
 
 
 

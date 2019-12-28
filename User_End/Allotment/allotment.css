@@ -19,40 +19,7 @@ body{
 }
 
 
-/*Footer css*/
-footer{
-    background-color: #172337;                 /*#364f6b;*/
-    color: white;
-}
-
-.footer-content{
-    margin-top: 3%;
-    margin-bottom: 3%;
-}
-
-.social-icon{
-    color: white;
-}
-
-.map-responsive{
-    margin-top: 2%;
-    position: relative;
-    padding-bottom: 75%; 
-    height: 0;
-    overflow: hidden;
-}
-
-.map-responsive iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100% !important;
-    height: 100% !important;
-}
-
-
-
 /*Error css change for box*/
 .Box-error{
-    border: 2px solid red;
+    box-shadow:inset 0 0 5px 1px red;
 }

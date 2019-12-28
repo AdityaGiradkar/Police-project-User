@@ -25,7 +25,7 @@ if($row['status']=='Approved')
 
     <!--link of external css-->
     <link rel="stylesheet" href="allotment.css">
-    
+
     <!--global css-->
     <link rel="stylesheet" href="../user.css">
 
@@ -34,80 +34,56 @@ if($row['status']=='Approved')
 -->
     <title>Allotment</title>
 
+    <!--fontawsome link-->
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js//all.js"></script>
 </head>
 
 <body>
-    <div class="d-flex" id="wrapper">
-        <div class="bg-light border-right" id="sidebar-wrapper">
-            <!--<div class="sidebar-heading"> </div>
-            <div class="sidebar-heading"> </div>-->
-            <div class="sidebar-heading" style="padding-top: 15%; padding-bottom: 5%;">
-                <center>
-                    <h3>Dashboard</h3>
-                </center>
-            </div>
-            <hr>
-            <div class="list-group list-group-flush container  green borderXwidth">
-                <a href="../waiting_list/waiting.html" class="custom-list">Quater availability</a>
-                <a href="../leave/leave.php" class="custom-list">Leave form</a>
-                <a href="../Allotment/allotment.php" class="custom-list">Allotment Form</a>
-                <a href="../history/history.php" class="custom-list">History</a>
-                <a href="#" class="custom-list">Setting</a>
-                <a href="../../login/logout.php" class="custom-list">Logout</a>
-            </div>
-        </div>
-
-        <div id="page-content-wrapper">
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                <span class="navbar-toggler-icon" id="menu-toggle"></span>
-                <div class="brand">
-                    <a class="navbar-brand " href="index.html">
-                        <img src="../images/logo.png" width="80" height="80" class="d-inline-block align-top" alt="">
-                    </a>
-                </div>
-            </nav>
-
+    <!--sidebar-->
+    <?php include("../sidebar.php")?>
 
     <!--Form Body-->
-    <div class="container allotment">
-        <form action="allotment.php" id="form-action" method="post" onsubmit="return validate()" enctype="multipart/form-data">
-            <h2 class="form-heading" style="text-align: center; padding-bottom: 4%">Allotment Form</h2>
-            <hr>
+    <div id="main">
 
-            <!--selection of city, after selection call function showPrefrence()-->
-            <div class="form-group allot">
-                <label><b>Posting City</b></label>
-                <select class="form-control" name="City" id="city" onchange="showPrefrence(value)">
-                    <option value="0">Select</option>
-                   <?php
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()" id="main-content">&#9776; open</span>
+
+        <div class="container allotment">
+            <form action="allotment.php" id="form-action" method="post" onsubmit="return validate()" enctype="multipart/form-data">
+                <h2 class="form-heading" style="text-align: center; padding-bottom: 4%">Allotment Form</h2>
+                <hr>
+
+                <!--selection of city, after selection call function showPrefrence()-->
+                <div class="form-group allot">
+                    <label><b>Posting City</b></label>
+                    <select class="form-control conf" name="City" id="city" onchange="showPrefrence(value)">
+                        <option value="">Select</option>
+                        <?php
                    
                     $qry="SELECT * FROM `cities` WHERE 1";
                     $run=mysqli_query($con,$qry);
                     while($row=mysqli_fetch_assoc($run)){
 						if(isset($_GET['city'])){
                         ?>
-					
-                    <option value="<?php echo $row['name']; ?>" <?php if($_GET['city']==$row['name']){ ?>  selected <?php } ?> ><?php echo $row['name']; ?></option>
-                   <?php
+
+                        <option value="<?php echo $row['name']; ?>" <?php if($_GET['city']==$row['name']){ ?> selected <?php } ?>><?php echo $row['name']; ?></option>
+                        <?php
 						}
 						else{ ?>
-						
-						<option value="<?php echo $row['name']; ?>"><?php echo $row['name']; ?></option>
-				<?php		}
+
+                        <option value="<?php echo $row['name']; ?>"><?php echo $row['name']; ?></option>
+                        <?php		}
 					} 
 					?>
-                </select>
-            </div>
-            <div <?php  if(isset($_GET['city'])) { ?> style="display:block ;"  <?php } else { ?> style="display:none;" <?php } ?>id="prefrences">
-                <div class="row" style="padding-left: 5%; padding-right: 0; ">
-					<?php for($i=0;$i<4;$i++)
-				{     ?>   <div class="col-lg-3 col-sm-6">
-                        <div class="form-group">
-                            <label><small><b>Preference <?php echo $i+1; ?></b></small></label>
-                            <select class="form-control" name="<?php echo $i; ?>">
-                               <?php if(isset($_GET['city'])){
+                    </select>
+                </div>
+                <div <?php  if(isset($_GET['city'])) { ?> style="display:block ;" <?php } else { ?> style="display:none;" <?php } ?>id="prefrences">
+                    <div class="row" style="padding-left: 5%; padding-right: 0; ">
+                        <?php for($i=0;$i<4;$i++)
+				{     ?> <div class="col-lg-3 col-sm-6">
+                            <div class="form-group">
+                                <label><small><b>Preference <?php echo $i+1; ?></b></small></label>
+                                <select class="form-control" name="<?php echo $i; ?>">
+                                    <?php if(isset($_GET['city'])){
 				$city=$_GET['city'];
 				$qry="SELECT * FROM `cities` WHERE  `name`='$city'";
 				$run=mysqli_query($con,$qry);
@@ -117,86 +93,49 @@ if($row['status']=='Approved')
 				$run1=mysqli_query($con,$qry1);
 					while($row1=mysqli_fetch_assoc($run1)){
 						?>
-								<option><?php echo $row1['name'] ?></option>
-                           <?php } 
+                                    <option><?php echo $row1['name'] ?></option>
+                                    <?php } 
 				}
 				 else
-				 	{ ?>				
-                    <option>Please select city first</option>
-                    
-            <?php } ?>       
-								?> </select>
+				 	{ ?>
+                                    <option>Please select city first</option>
+
+                                    <?php } ?>
+                                    ?> </select>
+                            </div>
                         </div>
-					</div>
-					<?php } ?>
+                        <?php } ?>
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group allot">
-                <label for="OfficialLetter"><b>Official Letter</b></label>
-                <input type="file" class="form-control-file" name="transfer" id="OfficialLetter" required>
-            </div>
+                <div class="form-group allot">
+                    <label for="OfficialLetter"><b>Official Letter</b></label>
+                    <input type="file" class="form-control-file conf" name="transfer" id="OfficialLetter">
+                </div>
 
-            <div class="form-group allot">
-                <label for="Sugestion"><b>Suggestion / Additional Requirements</b></label>
-                <textarea class="form-control" id="sugestion" name="suggestion" rows="3"></textarea>
-            </div>
-            <div style="text-align: center">
-                <input class="btn btn-primary active" type="submit" id="sub" name="submit" value="submit">
-                <a class="btn btn-danger active" style="margin-left: 25%;" type="submit" id="cancel" href = "" name="cancel">Cancel</a>
-            </div>
-        </form>
+                <div class="form-group allot">
+                    <label for="Sugestion"><b>Suggestion / Additional Requirements</b></label>
+                    <textarea class="form-control" id="sugestion" name="suggestion" rows="3"></textarea>
+                </div>
+                <div style="text-align: center">
+                    <input class="btn btn-primary active" type="submit" id="sub" name="submit" value="submit">
+                    <a class="btn btn-danger active" style="margin-left: 25%;" type="submit" id="cancel" href="../profile/profile.php" name="cancel" onclick="return cancelFun()">Cancel</a>
+                </div>
+            </form>
+        </div>
     </div>
 
 
     <!--footer-->
     <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 footer-content">
-                    <p>Contact Details : </p>
-                    <ul style="list-style: none; padding-left: 0;">
-                        <li>Abc : +9123456789</li>
-                        <li>gbd : +5463728919</li>
-                        <li>email : adityagiradkar11@gmail.com</li>
-                    </ul>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="footer-content">
-                        <p>Our social media support</p>
-                        <a class="fb-ic social-icon" href="https://www.facebook.com">
-                            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                        <a class="tw-ic social-icon" href="https://twitter.com">
-                            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                        <a class="ins-ic social-icon" href="https://www.instagram.com/?hl=en">
-                            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                    </div>
-
-                </div>
-                <div class="col-md-4">
-                    <div class="footer-content">
-                        <center>
-                            <p>Our office location</p>
-                        </center>
-                        <div class="map-responsive">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.4319798055867!2d73.86543031439693!3d18.464082075719663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2ea950f616219%3A0x321bdae2cea9f064!2sVishwakarma%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1569745970324!5m2!1sen!2sin" width="200" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr style="background-color: white;">
-            <center>
-                <p>&#169; All coppyrights are recived.</p>
-            </center>
-        </div>
 
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
+    <!--gobal js file link-->
+    <script src="../user.js"></script>
 
     <!--external js file link-->
     <script src="allotment1.js"></script>
@@ -208,7 +147,7 @@ if($row['status']=='Approved')
 </body>
 
 </html>
-	<?php
+<?php
 }
 
 	else
@@ -270,8 +209,3 @@ $qua1=$_POST['0'];
 	
 }
 ?>
-	
-	
-	
-	
-	

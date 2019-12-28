@@ -14,101 +14,89 @@ session_start();?>
 
     <!--link of external css-->
     <link rel="stylesheet" href="profile.css">
-    
-        <!--global css-->
+
+    <!--global css-->
     <link rel="stylesheet" href="../user.css">
 
     <!--font-->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
 
     <title>Allotment</title>
+
+    <!--fontawsome link-->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js//all.js"></script>
 </head>
 
-<body class="profile-text">
-	 <div class="d-flex" id="wrapper">
-        <div class="bg-light border-right" id="sidebar-wrapper">
-            <!--<div class="sidebar-heading"> </div>
-            <div class="sidebar-heading"> </div>-->
-            <div class="sidebar-heading" style="padding-top: 15%; padding-bottom: 5%;"><center><h3>Dashboard</h3></center></div><hr>
-            <div class="list-group list-group-flush container  green borderXwidth">
-                <a href="../waiting_list/waiting.html" class="custom-list">Quater availability</a>
-                <a href="../leave/leave.php" class="custom-list">Leave form</a>
-                <a href="../Allotment/allotment.php" class="custom-list">Allotment Form</a>
-                <a href="../history/history.php" class="custom-list">History</a>
-                <a href="#" class="custom-list">Setting</a>
-                <a href="../../login/logout.php" class="custom-list">Logout</a>
-            </div>
-        </div>
-
-        <div id="page-content-wrapper">
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                <span class="navbar-toggler-icon" id="menu-toggle"></span>
-                <div class="brand">
-                    <a class="navbar-brand " href="index.html">
-                        <img src="../images/logo.png" width="80" height="80" class="d-inline-block align-top" alt="">
-                    </a>
-                </div>
-            </nav>
-            
-
+<body>
+    <!--sidebar-->
+    <?php include("../sidebar.php")?>
 
     <!--profile division-->
-    <div class="jumbotron">
-        <div class="container">
-            <div class="row">
-                <!--profile photo-->
-                <div class="col-md-4 row-custom">
-                    <img src="../images/profile.jpg" alt="profile image" class="img-fluid profile-img">
-                </div>
+    <div id="main">
 
-                <!--personal info-->
-                <div class="col-md-7">
-                   <div class="row">
-                       <div class="col-12">
-                           <center><h1><?php echo $_SESSION['firstname']." ".$_SESSION['lastname'] ?></h1></center>
-                       </div>
-                   </div>
-                   <hr>
-                   <br>
-                   <br>
-                    <div class="row   row-custom">
-                        <div class="col-6">Name:</div>
-                        <div class="col-6"><?php echo $_SESSION['firstname']." ".$_SESSION['lastname'] ?></div>
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()" id="main-content">&#9776; open</span>
+
+        <div class="jumbotron">
+            <div class="container">
+                <div class="row">
+                    <!--profile photo-->
+                    <div class="col-md-4 row-custom">
+                        <img src="../images/profile.jpg" alt="profile image" class="img-fluid profile-img">
                     </div>
-                    
-                    <div class="row  row-custom">
-                        <div class="col-6">Age:</div>
-                        <div class="col-6"><?php echo $_SESSION['age'] ?></div>
+
+                    <!--personal info-->
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-12">
+                                <center>
+                                    <h1><?php echo $_SESSION['firstname']." ".$_SESSION['lastname'] ?></h1>
+                                </center>
+                            </div>
+                        </div>
+                        <hr>
+                        <br>
+                        <br>
+                        <div class="row   row-custom">
+                            <div class="col-6">Name:</div>
+                            <div class="col-6"><?php echo $_SESSION['firstname']." ".$_SESSION['lastname'] ?></div>
+                        </div>
+
+                        <div class="row  row-custom">
+                            <div class="col-6">Age:</div>
+                            <div class="col-6"><?php echo $_SESSION['age'] ?></div>
+                        </div>
+
+                        <div class="row  row-custom">
+                            <div class="col-6">Gender:</div>
+                            <div class="col-6"><?php echo  $_SESSION['gender'] ?></div>
+                        </div>
+
+                        <div class="row  row-custom">
+                            <div class="col-6">Mobile no.:</div>
+                            <div class="col-6"><?php echo $_SESSION['mobile_no']; ?></div>
+                        </div>
+
+                        <div class="row  row-custom">
+                            <div class="col-6">Department:</div>
+                            <div class="col-6"><?php echo $_SESSION['post']; ?></div>
+                        </div>
+
+                        <div class="row  row-custom">
+                            <div class="col-6">Current posting:</div>
+                            <div class="col-6"><?php echo $_SESSION['city']; ?></div>
+                        </div>
                     </div>
-                    
-                    <div class="row  row-custom">
-                        <div class="col-6">Gender:</div>
-                        <div class="col-6"><?php echo  $_SESSION['gender'] ?></div>
-                    </div>
-                    
-                    <div class="row  row-custom">
-                        <div class="col-6">Mobile no.:</div>
-                        <div class="col-6"><?php echo $_SESSION['mobile_no']; ?></div>
-                    </div>
-                    
-                    <div class="row  row-custom">
-                        <div class="col-6">Department:</div>
-                        <div class="col-6"><?php echo $_SESSION['post']; ?></div>
-                    </div>
-                    
-                    <div class="row  row-custom">
-                        <div class="col-6">Current posting:</div>
-                        <div class="col-6"><?php echo $_SESSION['city']; ?></div>
-                    </div>
+
                 </div>
-                
             </div>
         </div>
     </div>
 
 
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
+    <!--gobal js file link-->
+    <script src="../user.js"></script>
 
 
     <!--external js file link-->

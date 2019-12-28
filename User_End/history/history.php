@@ -27,52 +27,27 @@ if(isset($_SESSION['user_id']))
 
         <!--font-->
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+
+        <!--fontawsome link-->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js//all.js"></script>
     </head>
 
     <body>
-        <div class="d-flex" id="wrapper">
-            <div class="bg-light border-right" id="sidebar-wrapper">
-                <div class="sidebar-heading" style="padding-top: 15%; padding-bottom: 5%;">
-                    <center>
-                        <h3>Dashboard</h3>
-                    </center>
-                </div>
+       <!--sidebar-->
+        <?php include("../sidebar.php")?>
+
+
+        <!--main body -->
+        <div id="main">
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()" id="main-content">&#9776; open</span>
+
+           <h2 class="form-heading" style="text-align: center; padding-bottom: 3%; padding-top: 2%">History</h2>
                 <hr>
-                <div class="list-group list-group-flush container  green borderXwidth">
-                <a href="../waiting_list/waiting.html" class="custom-list">Quater availability</a>
-                <a href="../leave/leave.php" class="custom-list">Leave form</a>
-                <a href="../Allotment/allotment.php" class="custom-list">Allotment Form</a>
-                <a href="../history/history.php" class="custom-list">History</a>
-                <a href="#" class="custom-list">Setting</a>
-                <a href="../../login/logout.php" class="custom-list">Logout</a>
-                </div>
-            </div>
 
-            <div id="page-content-wrapper">
-
-                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                    <span class="navbar-toggler-icon" id="menu-toggle"></span>
-                    <div class="brand">
-                        <a class="navbar-brand " href="index.html">
-                            <img src="../images/logo.png" width="80" height="80" class="d-inline-block align-top" alt="">
-                        </a>
-                    </div>
-                </nav>
-
-                <br>
-				
-                <!--main body -->
-                <div>
-                    <div class="heading">
-                        <h4>
-                            HISTORY
-                        </h4>
-
-                    </div>
-                    <br>
-					<div class="container">
-                        <div class="list-group heading">
-					<?php
+            <br>
+            <div class="container">
+                <div class="list-group heading">
+                    <?php
 				include("../../db.php");
 				//select all the rows from history matching the user id in order of latest first
 				$user_id=$_SESSION['user_id'];
@@ -132,7 +107,7 @@ if(isset($_SESSION['user_id']))
 					$runcity1=mysqli_query($con,$fetch_city_name);
 					$row6=mysqli_fetch_assoc($runcity1);
 					$applied_city=$row6['name'];
-					echo $applied_city;//applied city
+					//echo $applied_city;//applied city
 					$date=$row['time'];
 					
 					$end_date =  $date;
@@ -147,48 +122,47 @@ if(isset($_SESSION['user_id']))
 				
 				
 				?>
-					
-                    
-                            <a href="#" class="list-group-item list-group-item-action" onclick="openModal()">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class=" mb-1"><?php echo $applied_city; ?></h5>
-                                    <span class=" badge-primary badge-pill tablet-padding"><?php echo $fullDays."days"; ?></span>
-                                </div>
-                                <h5>
-									<?php if($row['status']=='Unapproved')
+
+
+                    <a href="#" class="list-group-item list-group-item-action" onclick="openModal()">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class=" mb-1"><?php echo $applied_city; ?></h5>
+                            <span class=" badge-primary badge-pill tablet-padding"><?php echo $fullDays."days"; ?></span>
+                        </div>
+                        <h5>
+                            <?php if($row['status']=='Unapproved')
 				{?>
-                                    <p class="mb-1">Your application for quarter allotment is on its way </p>
-									<?php }
+                            <p class="mb-1">Your application for quarter allotment is on its way </p>
+                            <?php }
 				 					if($row['status']=='Approved')
 										{?>
-                                    <p class="mb-1">Your application for quarter allotment is approved </p>
-										<?php }
+                            <p class="mb-1">Your application for quarter allotment is approved </p>
+                            <?php }
 				 					if($row['status']=='Rejected')
 										{?>
-                                    <p class="mb-1">Your application for quarter allotment is rejected </p>
-									<?php 
+                            <p class="mb-1">Your application for quarter allotment is rejected </p>
+                            <?php 
 										}
 					?>
-                                    <small><?php echo $quater1name." ".$quater2name." ".$quater3name." ".$quater4name ?></small>
-									
-					
-							
-                                </h5>
-                            </a>
+                            <small><?php echo $quater1name." ".$quater2name." ".$quater3name." ".$quater4name ?></small>
 
-                           
-						<?php
+
+
+                        </h5>
+                    </a>
+
+
+                    <?php
 			
 				}
 							?>
-                        </div>
-                    </div>
-				
-
                 </div>
             </div>
+
+
         </div>
-		
+
+
 
         <!--pop up modal class-->
         <div id="simpleModal" class="modal">
@@ -230,6 +204,6 @@ if(isset($_SESSION['user_id']))
     </body>
 
     </html>
-<?php
+    <?php
 }
 ?>
