@@ -1,4 +1,4 @@
-body{
+body {
     /*font-family: 'Roboto Slab', serif;*/
     background-color: #f1f3f6;
 }
@@ -6,20 +6,28 @@ body{
 
 
 /*allotment form*/
-.allotment{
-    padding: 4% 18%;
+
+.allotment {
+    padding: 4% 5%;
 }
 
-.allot{
+.allot {
     padding: 1% 0;
 }
 
-.card{
+.card {
     padding: 2%;
 }
 
 
 /*Error css change for box*/
-.Box-error{
-    box-shadow:inset 0 0 5px 1px red;
+.Box-error {
+    box-shadow: inset 0 0 5px 1px red;
+}
+
+@media (min-width: 800px) {
+    .allotment {
+        padding: 4% 18%;
+
+    }
 }

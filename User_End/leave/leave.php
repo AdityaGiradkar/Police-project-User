@@ -12,6 +12,9 @@ if(isset($_SESSION['user_id'])){ ?>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+        <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
 
     <!--link of external css-->
@@ -20,8 +23,8 @@ if(isset($_SESSION['user_id'])){ ?>
     <!--global css-->
     <link rel="stylesheet" href="../user.css">
 
-    <!--font-->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <!--font
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">-->
 
     <title>leave</title>
 
@@ -32,11 +35,16 @@ if(isset($_SESSION['user_id'])){ ?>
 
 <body>
     <!--sidebar-->
-    <?php include("../sidebar.php")?>
+    <?php include("../sidebar-over.php")?>
 
     <!--Form Body-->
-    <div id="main">
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()" id="main-content">&#9776; open</span>
+    <div class="main">
+        <div class="sticky">
+            <button type="button" id="sidebarCollapse" class="btn btn-info">
+                <i class="fas fa-align-left"></i>
+                <span>Toggle Sidebar</span>
+            </button>
+        </div>
         <div class="container allotment">
             <form id="form-action" action="leave.php" method="post" onsubmit="return validate()" enctype="multipart/form-data">
                 <h2 class="form-heading" style="text-align: center; padding-bottom: 4%">Leave Form</h2>
@@ -138,6 +146,9 @@ if(isset($_SESSION['user_id'])){ ?>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+        <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
 </body>
 
