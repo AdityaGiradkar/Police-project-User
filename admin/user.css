@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap");
+
+body{
+    font-family: 'Roboto Slab', serif;
+    /*background-color: #f1f3f6;*/
+    background-color: #fff;
+}
+
+
+
+
+
+
+
+/*****************************
+*********sidebar**************
+*****************************/
+/*div.sidenav*/
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 80px;
+}
+
+/*to remove bullets*/
+.side{
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+/*to remove underline in anchor tag*/
+div.sidenav a {
+    text-decoration: none;
+}
+
+/*div.sidenav a*/
+.sidenav-list {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    /*font: 20px Raleway;*/
+    font-size: 16px;
+    /*color: #818181;*/
+    color: white;
+    position: relative;
+    display: block;
+    transition: 0.3s;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.sub{
+    font-size: 14px !important;
+    padding-left: 45px !important;
+}
+
+
+/*div.sidenav a:hover*/
+.sidenav-list:hover {
+    opacity: 1;
+    color: green;
+}
+
+.sidenav-profile{
+    /*height: 90%;*/
+    width: 50%;
+    border-radius: 100%;
+    margin-left: 50px;
+}
+
+/*
+.sidenav a
+{
+    color: black;
+    text-decoration: none;
+    font: 20px Raleway;
+    margin: 0px 10px;
+    padding: 10px 10px;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0.7;
+    
+}*/
+
+/*div.borderXwidth a:before, div.borderXwidth a:after*/
+.sidenav-list:before,
+.sidenav-list:after {
+    position: absolute;
+    opacity: 0;
+    width: 0%;
+    height: 2px;
+    content: '';
+    background: green;
+    transition: all 0.3s;
+}
+
+/*div.borderXwidth a:before*/
+.sidenav-list:before {
+    left: 0px;
+    top: 0px;
+}
+
+/*div.borderXwidth a:after*/
+.sidenav-list:after {
+    right: 0px;
+    bottom: 0px;
+}
+
+/*div.borderXwidth a:hover:before, .borderXwidth a:hover:after*/
+.sidenav-list:hover:before,
+.sidenav-list:hover:after {
+    opacity: 1;
+    width: 100%;
+}
+
+/*
+.sidenav a:hover {
+  color: #f1f1f1;
+    color: green;
+}
+*/
+.sidenav .closebtn {
+    position: absolute;
+    top: 2px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: white;
+    opacity: 0.6;
+}
+
+.sidenav .closebtn:hover {
+    color: green;
+    opacity: 1;
+}
+
+
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+#navbar-custom {
+    transition: 0.5s;
+}
+
+
+/*when screen is less than 768px then this css is applied*/
+@media (min-width: 768px) {
+    #mySidenav {
+        width: 250px;
+    }
+
+    #main {
+        margin-left: 250px;
+    }
+
+    #navbar-custom {
+        margin-left: 250px;
+    }
+
+    #main-content {
+        display: none;
+    }
+}
+
+
+
+

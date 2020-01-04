@@ -1,0 +1,65 @@
+.bread
+{
+	margin-top: -24px;
+    margin-left: 0;
+}
+
+.card-counter{
+    box-shadow: 2px 2px 10px #DADADA;
+    margin: 5px;
+    padding: 20px 10px;
+    background-color: #fff;
+    height: 100px;
+    border-radius: 5px;
+    transition: .3s linear all;
+  }
+
+  .card-counter:hover{
+    box-shadow: 4px 4px 20px #111;
+    transition: .3s linear all;
+  }
+
+  .card-counter.primary{
+    background-color: royalblue;
+    color: #FFF;
+  }
+
+  .card-counter.danger{
+    background-color: grey;
+    color: #FFF;
+  }  
+
+  .card-counter.success{
+    background-color: grey;
+    color: #FFF;
+  }  
+
+  .card-counter.info{
+    background-color: grey;
+    color: #FFF;
+  }  
+
+  .quick_icon{
+    font-size: 5em;
+    opacity: 0.1;
+	
+  }
+
+  .card-counter .count-numbers{
+    position: absolute;
+    right: 35px;
+    top: 20px;
+    font-size: 32px;
+    display: block;
+  }
+
+  .card-counter .count-name{
+    position: absolute;
+    right: 35px;
+    top: 65px;
+    font-style: italic;
+    text-transform: capitalize;
+    opacity: 0.7;
+    display: block;
+    font-size: 18px;
+  }

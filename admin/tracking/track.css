@@ -1,0 +1,39 @@
+.head
+{
+	text-align: center;
+}
+
+/* Letter Body*/
+.total{
+    padding-top: 2%
+}
+
+
+.complete{
+    margin: 0 15%;
+    border: solid 2px;
+    padding: 2%;
+}
+.top{
+    margin-left: 70%;
+    padding: 10% 2% 2% 2%;
+    background-color: rd;
+}
+
+.subject{
+    padding: 2%;
+    background-color: yelow;
+}
+
+.main-body{
+    padding: 2%;
+    background-color: blu;
+    text-align: justify;
+}
+
+.end{
+    padding: 2%;
+    background-color: gren;
+    margin-left: 70%;
+
+}

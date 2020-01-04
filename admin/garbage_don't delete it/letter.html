@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <title>Quater Allotment</title>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js//all.js"></script>
+
+    <!--External css file-->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <!--Navigation Bar-->
+    <section id="navigation">
+        <nav class="navbar navbar-light navbar-expand-md ">
+            <img class="navbar-logo policeLogo" src="police.png" alt="police logo">
+            <a class="navbar-brand" href="#"><b>
+                    <h3 class="brand">Quarter allotment</h3>
+                </b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#options" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="options">
+                <ul class="navbar-nav ml-auto">
+                    <a class="nav-link" href="#">
+                        <li class="nav-item"><b class="list">Home</b></li>
+                    </a>
+                    <a class="nav-link" href="mailto:adityagiradkar11@gmail.com">
+                        <li class="nav-item"><b class="list">contact</b></li>
+                    </a>
+                    <a class="nav-link" href="index.html">
+                        <li class="nav-item"><b class="list">Logout</b></li>
+                    </a>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+
+    <!--Letter Body-->
+    <section>
+        <div class="total">
+
+            <div class="complete" id="printableArea">
+                <div class="upper-part">
+                    <center><small>Somthing about police form</small></center>
+                </div>
+
+                <div class="top">
+                    <p>date : 29-08-2019</p>
+                    <p>Authority Designation,</p>
+                    <p>Institute Name…</p>
+                    <p>Institute Address…</p>
+                </div>
+
+                <div class="subject">
+                    <p><strong>Sub : </strong> &nbsp;&nbsp;<em>Request for Govt Quarter Allocation</em></p>
+
+                </div>
+
+                <div class="main-body">
+                    <p>Respected Sir,</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I am <a href="#"><strong>(Name)</strong></a>, <strong>(Job designation, like Irrigation officer)</strong> of <strong>(Department name) since 3/5/10 years</strong>. I belong to (Area name) which is my hometown city as well but my job placement is in <strong>(Job place name)</strong>. (Job place) is far away from my home and it is impossible to travel daily for (road distance) to reach my office. I am married with two kids so it is impossible for me to stay here in a rented residence with current salary.</p>
+
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I request you to please allocate me a Government Quarter or Government Flat in <strong>(Job place name and a quarter)</strong>. I will be thankful to you. Furthermore, I will fulfill all the requirements for Government quarter like rent, maintenance and utility bills etc on my own.</p>
+                    <p>Note : </p>
+
+                </div>
+
+                <div class="end">
+                    Yours Sincerely,
+                    <br><br>
+
+                    Name…
+                    <br><br>
+
+                    Job Designation…
+                    <br><br>
+
+                    Signature…
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <!--Buttons-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 print-btn">
+                    <input type="button" class="btn btn-primary  btn-block" onclick="printDiv('printableArea')" value="print" />
+            </div>
+            <div class="col-md-4  ALM">
+                <a href="#" class="btn btn-primary  btn-block active" role="button" aria-pressed="true">Allot</a>
+            </div>
+            <div class="col-md-4  ALM">
+                <a href="#" class="btn btn-primary btn-block active" role="button" aria-pressed="true">Decline</a>
+            </div>
+            
+        </div>
+    </div>
+
+
+    <!--Footer-->
+    <section>
+        <footer id="footer">
+            <i class="social-icon fab fa-facebook"></i>
+            <i class="social-icon fab fa-twitter-square"></i>
+            <i class="social-icon fab fa-instagram"></i>
+            <p> &#9400 copyright received</p>
+        </footer>
+    </section>
+
+
+    <!--Script for printing page-->
+    <script>
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+        }
+    </script>
+
+</body>
+
+</html>
