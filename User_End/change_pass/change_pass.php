@@ -1,3 +1,7 @@
+<?php session_start();
+if(isset($_SESSION['user_id']))
+{
+?>
 <!doctype html>
 <html lang="en">
 
@@ -47,21 +51,21 @@
             <form action="change_pass.php" id="form-action" method="post" onsubmit="return validate()">
                 <div class="form-group">
                     <label for="currentPass">Current Password</label>
-                    <input type="password" class="form-control conf" id="currentPass">
+                    <input type="password" name="curr" class="form-control conf" id="currentPass">
                 </div>
 
                 <div class="form-group">
                     <label for="newPass">New Password</label>
-                    <input type="password" class="form-control conf" id="newPass">
+                    <input type="password" name="new" class="form-control conf" id="newPass">
                 </div>
 
                 <div class="form-group">
                     <label for="confPass">Conform Password</label>
-                    <input type="password" class="form-control conf" id="confPass">
+                    <input type="password" name="new1" class="form-control conf" id="confPass">
                 </div>
 
                 <div style="text-align: center">
-                    <input class="btn btn-primary active" type="submit" id="sub" name="submit" value="submit">
+                    <input class="btn btn-primary active" type="submit" name="submit" id="sub" name="submit" value="submit">
                     <a class="btn btn-danger active" style="margin-left: 25%;" type="submit" id="cancel" href="../profile/profile.php" name="cancel" onclick="return cancelFun()">Cancel</a>
                 </div>
 
@@ -91,3 +95,33 @@
 </body>
 
 </html>
+<?php } 
+else
+	echo "<script>alert('Please login ')</script>";
+?>
+<?php
+	include("../../db.php");
+	if(isset($_POST['submit']))
+	{
+	$current=$_POST['curr'];
+	$new=$_POST['new'];
+	$confirm=$_POST['new1'];
+	$user_id=$_SESSION['user_id'];
+	$qry="SELECT * FROM `users` WHERE `id`='$user_id'";
+	$run=mysqli_query($con,$qry);
+	$row=mysqli_fetch_assoc($run);
+	if($row['user_password']==$current)
+	{
+		$qry="UPDATE `users` SET `user_password`='$confirm'";
+		$run=mysqli_query($con,$qry);
+		if($run)
+		{
+			echo "<script>alert('Password updated successfully')</script>";
+		}
+	}
+	else
+	{
+		echo "<script>alert('Old Password does not match')</script>";
+	}
+	}
+	?>

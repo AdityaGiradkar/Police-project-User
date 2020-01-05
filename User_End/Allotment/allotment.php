@@ -1,5 +1,7 @@
 <?php
 session_start();
+if(isset($_SESSION['user_id']))
+{
  include("../../db.php");
 $user_id=$_SESSION['user_id'];
 
@@ -249,4 +251,8 @@ $qua1=$_POST['0'];
 	
 	
 }
+}
+else
+	echo "<script>alert('Please login')</script>";
+
 ?>
