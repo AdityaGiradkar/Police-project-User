@@ -217,4 +217,6 @@ if(isset($_SESSION['user_id']))
     </html>
     <?php
 }
+else
+	echo "<script>alert('Please login')</script>";
 ?>
