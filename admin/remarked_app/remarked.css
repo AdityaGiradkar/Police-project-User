@@ -1,47 +1,55 @@
-.head
-{
-	text-align: center;
+.head {
+    text-align: center;
 }
 
 /* Letter Body*/
-.total{
+.total {
     padding-top: 2%
 }
 
 
-.complete{
+.complete {
     margin: 0 15%;
     border: solid 2px;
     padding: 2%;
+    background-color: #ffffff;
 }
 
-.top{
+.top {
     margin-left: 70%;
     padding: 10% 2% 2% 2%;
     background-color: rd;
 }
 
-.subject{
+.subject {
     padding: 2%;
     background-color: yelow;
 }
 
-.main-body{
+.main-body {
     padding: 2%;
     background-color: blu;
     text-align: justify;
 }
 
-.end{
+.end {
     padding: 2%;
     background-color: gren;
     margin-left: 70%;
 
 }
 
-.print-btn{
+.print-btn {
     padding: 5% 40%;
-    
+
 }
 
+@media(max-width:800px) {
+    .complete {
+        margin: 0;
+        border: solid 2px;
+        padding: 2%;
+        font-size: 14px;
+    }
 
+}

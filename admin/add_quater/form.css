@@ -7,3 +7,13 @@ text-align: center;
 .new-quarter{
     padding: 0 10%;
 }
+
+.sticky{
+    z-index: 100;
+}
+
+@media(max-width:800px){
+    .new-quarter{
+        padding: 0 2%;
+    }
+}

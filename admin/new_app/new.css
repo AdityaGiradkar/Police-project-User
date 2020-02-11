@@ -31,6 +31,12 @@
     text-align: justify;
 }
 
+#remark-area input{
+    margin-top: 1%;
+    text-align: center;
+}
+
+
 .end{
     padding: 2%;
     background-color: gren;

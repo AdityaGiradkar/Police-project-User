@@ -1,6 +1,6 @@
 //sidebar
 
-function openNav() {
+/*function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
   document.getElementById("main").style.marginLeft = "250px";
     document.getElementById("navbar-custom").style.marginLeft = "250px";
@@ -12,8 +12,26 @@ function closeNav() {
   document.getElementById("main").style.marginLeft= "0";
      document.getElementById("navbar-custom").style.marginLeft = "0px";
   document.getElementById("main-content").style.display = "inline-block";
-}
+}*/
 
+
+     $(document).ready(function() {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#dismiss, .overlay').on('click', function() {
+                $('#sidebar').removeClass('active');
+                $('.overlay').removeClass('active');
+            });
+
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar').addClass('active');
+                $('.overlay').addClass('active');
+                //$('.collapse.in').toggleClass('in');
+                //$('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
 
 //validate form
 function validate() {
@@ -41,11 +59,6 @@ function cancelFun()
     var conformation = confirm("Data may lost.");
     return conformation;
 }
-
-
-
-
-
 
 //sidebar color
 /*var list = document.getElementsByClassName("a");
