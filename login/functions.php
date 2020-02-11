@@ -1,5 +1,23 @@
 <?php
 session_start();
+function ifItIsMethod($method=null){
+
+    if($_SERVER['REQUEST_METHOD'] == strtoupper($method)){
+
+        return true;
+
+    }
+
+    return false;
+
+}
+function redirect($location){
+
+
+    header("Location:" . $location);
+    exit;
+
+}
 
 
 
@@ -60,7 +78,7 @@ session_start();
 		  $_SESSION['city'] = $city ;
 
 					if($db_user_role=="admin"){
-             redirect("../leave");
+             redirect("../admin/new_app/list.php");
 			}
 			else
 				redirect("../User_end/profile/profile.php");

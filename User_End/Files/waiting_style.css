@@ -1,0 +1,13 @@
+.header
+{
+	background-color: blue;
+}
+.listing
+{
+	padding: 5% 7% 0% 7%;
+}
+.list-group-item
+{
+	border: 0px;
+	padding: 0px 0px 5px 0px;
+}

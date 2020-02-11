@@ -16,26 +16,26 @@
         </li>
 
         <li>
-            <a class="sidenav-list" href="../waiting_list/waiting.php">Quater availability</a>
+            <a class="sidenav-list" id="nav-availabel" href="../waiting_list/waiting.php">Quater availability</a>
         </li>
         <li>
-            <a class="sidenav-list" href="../leave/leave.php">Leave form</a>
+            <a class="sidenav-list" id="nav-leave" href="../leave/leave.php">Leave form</a>
         </li>
         <li>
-            <a class="sidenav-list" href="../Allotment/allotment.php">Allotment Form</a>
+            <a class="sidenav-list" id="nav-allot" href="../Allotment/allotment.php">Allotment Form</a>
         </li>
         <li>
-            <a class="sidenav-list" href="../history/history.php">History</a>
+            <a class="sidenav-list" id="nav-history" href="../history/history.php">History</a>
         </li>
 
         <li>
             <a class="sidenav-list" href="#settingSubmenu" data-toggle="collapse">Setting<i class="fas fa-chevron-down" style="margin-left: 100px;"></i></a>
             <ul class="collapse list-unstyled" id="settingSubmenu">
                 <li>
-                    <a class="sidenav-list sub" href="../change_pass/change_pass.php">Change Password</a>
+                    <a class="sidenav-list sub" id="nav-pass" href="../change_pass/change_pass.php">Change Password</a>
                 </li>
                 <li>
-                    <a class="sidenav-list sub" href="../change_info/change_info.php">Personal info</a>
+                    <a class="sidenav-list sub" id="nav-info" href="../change_info/change_info.php">Personal info</a>
                 </li>
             </ul>
         </li>

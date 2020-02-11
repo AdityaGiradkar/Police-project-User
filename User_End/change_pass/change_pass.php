@@ -29,12 +29,15 @@ if(isset($_SESSION['user_id']))
 
     <!--fontawsome link-->
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js//all.js"></script>
-
+    <link rel="icon" href="../images/icon.ico">
 </head>
 
 
 <body>
     <?php include("../sidebar-over.php")?>
+    <script>
+            document.getElementById("nav-pass").classList.add("current");
+    </script>
 
     <!--main body-->
     <div class="main">
@@ -112,7 +115,7 @@ else
 	$row=mysqli_fetch_assoc($run);
 	if($row['user_password']==$current)
 	{
-		$qry="UPDATE `users` SET `user_password`='$confirm'";
+		$qry="UPDATE `users` SET `user_password`='$confirm' WHERE `id`='$user_id'";
 		$run=mysqli_query($con,$qry);
 		if($run)
 		{

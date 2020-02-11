@@ -47,7 +47,7 @@ $arr=array();
 
     <body>
         <!--sidebar-->
-        <?php include("../sidebar.php")?>
+        <?php include("../sidebar-over.php")?>
 		
 		
 
@@ -214,7 +214,7 @@ $arr=array();
 								if($arr1[$i]['post_id']==$post_id)
 								{
 									$area_id=$arr1[$i]['area_id'];
-									$qry="SELECT * FROM `area` WHERE `area_id`='$area'";
+									$qry="SELECT * FROM `area` WHERE `area_id`='$area_id'";
 								$run=mysqli_query($con,$qry);
 								$row1=mysqli_fetch_assoc($run);
 								$area_name=$row1['name'];//area name

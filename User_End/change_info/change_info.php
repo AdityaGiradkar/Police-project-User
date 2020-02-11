@@ -21,11 +21,15 @@
 
     <!--fontawsome link-->
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js//all.js"></script>
+    <link rel="icon" href="../images/icon.ico">
 </head>
 
 
 <body>
     <?php include("../sidebar-over.php")?>
+    <script>
+            document.getElementById("nav-info").classList.add("current");
+    </script>
 
     <!--main body-->
     <div class="main">

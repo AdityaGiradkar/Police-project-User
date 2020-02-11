@@ -4,7 +4,8 @@ if(isset($_SESSION['user_id']))
 {
  include("../../db.php");
 $user_id=$_SESSION['user_id'];
-
+	$postid=$_SESSION['post_id'];
+echo $postid;
 $query="SELECT * FROM `leave_status` WHERE `user_id`='$user_id'";
 $run=mysqli_query($con,$query);
 $row=mysqli_fetch_assoc($run);
@@ -47,11 +48,16 @@ if($row['status']=='Approved')
 
     <!--fontawsome link-->
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js//all.js"></script>
+     <link rel="icon" href="../images/icon.ico">
 </head>
 
 <body>
     <!--sidebar-->
     <?php include("../sidebar-over.php")?>
+     <script>
+        document.getElementById("nav-allot").classList.add("current");
+    </script>
+    
 
     <!--Form Body-->
     <div class="main">
@@ -74,7 +80,7 @@ if($row['status']=='Approved')
                     <select class="form-control conf" name="City" id="city" onchange="showPrefrence(value)">
                         <option value="">Select</option>
                         <?php
-                   
+                    echo $postid;
                     $qry="SELECT * FROM `cities` WHERE 1";
                     $run=mysqli_query($con,$qry);
                     while($row=mysqli_fetch_assoc($run)){
@@ -232,9 +238,11 @@ $qua1=$_POST['0'];
 	//insert into applicant and also update the history
 	$qry4="INSERT INTO `applicant`(  `user_id`,`area_id1`, `area_id2`, `area_id3`, `area_id4`, `Post_id`, `Requirements`, `Desk`, `resident`, `Status`,`Official_letter`) VALUES('$user_id','$area1_id','$area2_id','$area3_id','$area4_id','$post_id','$require','1','Yes','Unapproved','$transfer')";
 	$run4=mysqli_query($con,$qry4);
+	$row4=mysqli_fetch_assoc($run4);
+	
 	$qry_hist="INSERT INTO `history`( `left_quater`, `quater_area1`, `quater_area2`, `quater_area3`, `quater_area4`, `user_id`, `status`) VALUES ('$left_quater','$area1_id','$area2_id','$area3_id','$area4_id','$user_id','Unapproved')";
 	$run_history=mysqli_query($con,$qry_hist);
-	if(!$run)
+	if(!$run4)
 	{
 		echo mysqli_error($con);
 	}
@@ -242,6 +250,25 @@ $qua1=$_POST['0'];
 	{
 		echo "<script>alert('Allotment form filled successfully')</script>";
 	}
+	$update_waiting="SELECT * FROM `quaters` WHERE (`post_id`='$postid') AND (`area_id`='$area1_id')";
+	$run_waiting=mysqli_query($con,$update_waiting);
+	if($run_waiting)
+	{
+		echo "success";
+		
+	}
+	else
+		
+		echo mysqli_error($con);
+	$row_waiting=mysqli_fetch_assoc($run_waiting);
+	$waiting_count=$row_waiting['waiting_count'];
+	$quater_id=$row_waiting['id'];
+	$waiting_count=$waiting_count+1;
+	$update_waiting1="UPDATE `quaters` SET `waiting_count`='$waiting_count' WHERE `id`='$quater_id'";
+	$run_waiting1=mysqli_query($con,$update_waiting1);
+	$applicantid=$row4['id'];
+	$waiting="INSERT INTO `waiting`(`applicant_id`, `quater_id`) VALUES ('$applicantid','$quater_id') ";
+	$runw=mysqli_query($con,$waiting);
 	
 	
 	
