@@ -5,7 +5,7 @@
     </div>
 
     <div class="sidebar-header" style="background-color: #111;">
-        <h4>Hello, Aditya</h4>
+        <h4>Hello, <?php echo $_SESSION['firstname'] ?></h4>
     </div>
 
     <ul class="list-unstyled components">

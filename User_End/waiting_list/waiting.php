@@ -4,7 +4,7 @@ if(isset($_SESSION['user_id'])){
 ?>
 <! DOCTYPE HTML>
     <html lang="en">
-		<?php
+    <?php
 $arr=array();
 									$arr1=array();
 									if(isset($_GET['city'])){
@@ -24,6 +24,7 @@ $arr=array();
 									//print_r($arr);
 									}
 		?>
+
     <head>
         <title>Waiting List</title>
         <!-- Required meta tags -->
@@ -33,6 +34,10 @@ $arr=array();
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
 
         <!--External css-->
@@ -48,46 +53,54 @@ $arr=array();
     <body>
         <!--sidebar-->
         <?php include("../sidebar-over.php")?>
-		
-		
+        <script>
+            document.getElementById("nav-availabel").classList.add("current");
+
+        </script>
+
 
         <!--Main body-->
         <div id="main">
-            <span style="font-size:30px;cursor:pointer" onclick="openNav()" id="main-content">&#9776; open</span>
+            <div class="sticky">
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span>Toggle Sidebar</span>
+                </button>
+            </div>
 
             <br>
             <h2 class="form-heading" style="text-align: center; padding-bottom: 3%">Waiting List</h2>
-                <hr>
+            <hr>
             <div style="text-align: center">Enter City name</div>
 
             <!-- Main body -->
             <div class="container">
-				
+
                 <table class="table">
                     <li class="list-group-item d-flex justify-content-between align-items-center top">
                         <form class="form-inline my-2 my-lg-0">
                             <div class="input-group">
-							<?php
+                                <?php
 								$qry="SELECT * FROM `cities`";
 								$result=mysqli_query($con,$qry);
 								?>
-								
+
                                 <select class="custom-select" id="selectCity" aria-label="Example select with button addon" onchange="showQuarter(value)">
-									 <option value="0">City</option>
-									<?php
+                                    <option value="0">City</option>
+                                    <?php
 									while($row=mysqli_fetch_assoc($result))
 									{ 
 										if(isset($_GET['city'])){
                        
 									?>
-                                   
-                                    <option value="<?php echo $row['name']; ?>" <?php if($_GET['city']==$row['name']){ ?>  selected <?php } ?>><?php echo $row['name'] ; ?></option>
-									<?php  } else
+
+                                    <option value="<?php echo $row['name']; ?>" <?php if($_GET['city']==$row['name']){ ?> selected <?php } ?>><?php echo $row['name'] ; ?></option>
+                                    <?php  } else
 									{ 
 									?>
-						
-								<option value="<?php echo $row['name']; ?>"><?php echo $row['name']; ?></option>
-								<?php		}
+
+                                    <option value="<?php echo $row['name']; ?>"><?php echo $row['name']; ?></option>
+                                    <?php		}
 											} 
                                    
 									
@@ -98,11 +111,10 @@ $arr=array();
                         </form>
                     </li>
                 </table>
-                <div <?php  if(isset($_GET['city'])) { ?> style="display:block ;"  <?php } else { ?> style="display:none;" <?php } ?> id="quarter">
+                <div <?php  if(isset($_GET['city'])) { ?> style="display:block ;" <?php } else { ?> style="display:none;" <?php } ?> id="quarter">
                     <table class="table">
                         <li class="list-group-item d-flex justify-content-between align-items-center top">
-                            <form class="form-inline my-2 my-lg-0" action="" method="post" enctype=multipart/form-datat>
-								<?php
+                            <form class="form-inline my-2 my-lg-0" action="" method="post" enctype=multipart/form-datat> <?php
 								for($i=0;$i<count($arr);$i++)
 								{
 									$area=$arr[$i];
@@ -114,56 +126,55 @@ $arr=array();
 									}
 								}
 								//print_r($arr1);
-								?>
-                                <div class="input-group">
-                                    <select class="custom-select" id="selectQuater" name="quater" aria-label="Example select with button addon">
-										<option value="0">Select Quater</option>
-                                       <?php
+								?> <div class="input-group">
+                                <select class="custom-select" id="selectQuater" name="quater" aria-label="Example select with button addon">
+                                    <option value="0">Select Quater</option>
+                                    <?php
 								for($i=0;$i<count($arr1);$i++)
 								{ ?>
-                                        <option value="<?php echo $arr1[$i]['name']; ?>"><?php echo $arr1[$i]['name']; ?></option>
-                                    <?php } ?>     
-                                    </select>
+                                    <option value="<?php echo $arr1[$i]['name']; ?>"><?php echo $arr1[$i]['name']; ?></option>
+                                    <?php } ?>
+                                </select>
 
-                                </div>
-                                <div class="input-group">
-                                    <select class="custom-select" name="post" id="selectPost" aria-label="Example select with button addon">
-										<option value="0">Select Post</option>
-                                        <?php
+                </div>
+                <div class="input-group">
+                    <select class="custom-select" name="post" id="selectPost" aria-label="Example select with button addon">
+                        <option value="0">Select Post</option>
+                        <?php
 										$qry="SELECT * FROM `post`";
 										$run=mysqli_query($con,$qry);
 										while($row=mysqli_fetch_assoc($run))
 										{
 										?>
-                                        <option value="<?php echo $row['post'] ?>"><?php echo $row['post'] ?></option>
-                                        <?php }
+                        <option value="<?php echo $row['post'] ?>"><?php echo $row['post'] ?></option>
+                        <?php }
 										?>
-                                    </select>
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" name="submit" type="submit" value="submit">Search</button>
-                                    </div>
-                                </div>
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" name="submit" type="submit" value="submit">Search</button>
+                    </div>
+                </div>
 
-                            </form>
+                </form>
 
-                        </li>
-                    </table>
-					<div class="table-responsive-lg">
-                        <table class="table">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">SrNo.</th>
-                                    <th scope="col">Area</th>
-                                    <th scope="col">Post</th>
-                                   
-                                    <th scope="col">Available Flats</th>
-                                    <th scope="col">Quater Name</th>
-                                    <th scope="col">waitingList</th>
-                                </tr>
-                            </thead>
+                </li>
+                </table>
+                <div class="table-responsive-lg">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">SrNo.</th>
+                                <th scope="col">Area</th>
+                                <th scope="col">Post</th>
 
-                            <tbody>
-					<?php
+                                <th scope="col">Available Flats</th>
+                                <th scope="col">Quater Name</th>
+                                <th scope="col">waitingList</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?php
 					if(isset($_POST['submit']))
 					{
 						$quater=$_POST['quater'];
@@ -189,16 +200,16 @@ $arr=array();
 							$row1=mysqli_fetch_assoc($run1);
 							$post_name=$row1['post'];//post name
 							?>
-							 <tr>
-                                    <th scope="row">1</th>
-                                    <td><?php echo $area_name; ?></td>
-                                    <td><?php echo $post_name; ?></td>
-                                  
-                                    <td><?php echo $flats; ?></td>
-                                    <td><?php echo $name; ?></td>
-                                    <td><?php echo $waiting; ?></td>
-                                </tr>
-						<?php	
+                            <tr>
+                                <th scope="row">1</th>
+                                <td><?php echo $area_name; ?></td>
+                                <td><?php echo $post_name; ?></td>
+
+                                <td><?php echo $flats; ?></td>
+                                <td><?php echo $name; ?></td>
+                                <td><?php echo $waiting; ?></td>
+                            </tr>
+                            <?php	
 							
 							
 						}
@@ -222,16 +233,16 @@ $arr=array();
 									$name=$arr1[$i]['name'];
 									$waiting=$arr1[$i]['waiting_count'];
 									?>
-									 <tr>
-                                    <th scope="row">1</th>
-                                    <td><?php echo $area_name; ?></td>
-                                    <td><?php echo $post; ?></td>
-                                  
-                                    <td><?php echo	$flats ; ?></td>
-                                    <td><?php echo $name; ?></td>
-                                    <td><?php echo $waiting; ?></td>
-                                </tr>
-								<?php
+                            <tr>
+                                <th scope="row">1</th>
+                                <td><?php echo $area_name; ?></td>
+                                <td><?php echo $post; ?></td>
+
+                                <td><?php echo	$flats ; ?></td>
+                                <td><?php echo $name; ?></td>
+                                <td><?php echo $waiting; ?></td>
+                            </tr>
+                            <?php
 									
 								}
 							}
@@ -260,16 +271,16 @@ $arr=array();
 							$row3=mysqli_fetch_assoc($run3);
 							$post_name=$row3['post'];//post name
 							?>
-							 <tr>
-                                    <th scope="row">1</th>
-                                    <td><?php echo $area_name; ?></td>
-                                    <td><?php echo $post_name; ?></td>
-                                  
-                                    <td><?php echo	$flats ; ?></td>
-                                    <td><?php echo $name; ?></td>
-                                    <td><?php echo $waiting; ?></td>
-                                </tr>
-							<?php 
+                            <tr>
+                                <th scope="row">1</th>
+                                <td><?php echo $area_name; ?></td>
+                                <td><?php echo $post_name; ?></td>
+
+                                <td><?php echo	$flats ; ?></td>
+                                <td><?php echo $name; ?></td>
+                                <td><?php echo $waiting; ?></td>
+                            </tr>
+                            <?php 
 						
 					
 					}
@@ -279,16 +290,16 @@ $arr=array();
 							
 						
 						?>
-                    
-                               
-                               
-                              
 
-                            </tbody>
-                        </table>
-                    </div>
+
+
+
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
+        </div>
         </div>
 
 
@@ -307,12 +318,13 @@ $arr=array();
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
     </body>
 
     </html>
-<?php }
+    <?php }
 else
 	echo "<script>alert('Please login')</script>";
 ?>
-
-

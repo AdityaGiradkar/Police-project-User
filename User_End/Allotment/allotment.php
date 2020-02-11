@@ -5,7 +5,7 @@ if(isset($_SESSION['user_id']))
  include("../../db.php");
 $user_id=$_SESSION['user_id'];
 	$postid=$_SESSION['post_id'];
-echo $postid;
+//echo $postid;
 $query="SELECT * FROM `leave_status` WHERE `user_id`='$user_id'";
 $run=mysqli_query($con,$query);
 $row=mysqli_fetch_assoc($run);
@@ -200,7 +200,15 @@ if($row['status']=='Approved')
 }
 
 	else
-	echo "<script>alert('Your leave Status is not approved')</script>";
+    {
+	   //echo "<script>alert('Your leave Status is not approved')</script>";
+     ?>
+      <br>
+       <center><h1>Leave Status ia not approved.</h1>
+           <h3><a href="../profile/profile.php">Back</a></h3></center>
+        <?php
+       //header("location: ../profile/profile.php"); 
+    }
 ?>
 <?php 
 
@@ -269,13 +277,6 @@ $qua1=$_POST['0'];
 	$applicantid=$row4['id'];
 	$waiting="INSERT INTO `waiting`(`applicant_id`, `quater_id`) VALUES ('$applicantid','$quater_id') ";
 	$runw=mysqli_query($con,$waiting);
-	
-	
-	
-	
-	
-	
-	
 	
 }
 }
