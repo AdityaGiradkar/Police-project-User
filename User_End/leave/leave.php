@@ -30,12 +30,15 @@ if(isset($_SESSION['user_id'])){ ?>
 
     <!--fontawsome link-->
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js//all.js"></script>
-
+    <link rel="icon" href="../images/icon.ico">
 </head>
 
 <body>
     <!--sidebar-->
     <?php include("../sidebar-over.php")?>
+    <script>
+        document.getElementById("nav-leave").classList.add("current");
+    </script>
 
     <!--Form Body-->
     <div class="main">
@@ -180,7 +183,7 @@ if(isset($_POST['submit']))
 } else {
   echo "Not uploaded because of error #".$_FILES['electricity']['error'];
 	}
-	$qry2="INSERT INTO `leave_status`( `user_id`, `electricity_bill`, `transfer_letter`,  `quater_id`, `status`) VALUES ('$user_id','$elec_bill','$leave','$qua_id','Unapproved')";
+	$qry2="INSERT INTO `leave_status`( `user_id`, `electricity_bill`, `transfer_letter`,  `quater_id`, `status`) VALUES ('$user_id','$elec_bill','$leave','$qua_id','Approved')";
 	$run2=mysqli_query($con,$qry2);
 	if(!$run2)
 	{

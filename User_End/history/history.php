@@ -33,11 +33,15 @@ if(isset($_SESSION['user_id']))
 
         <!--fontawsome link-->
         <script defer src="https://use.fontawesome.com/releases/v5.0.7/js//all.js"></script>
-    </head>
+	<link rel="icon" href="../images/icon.ico">   
+ </head>
 
     <body>
         <!--sidebar-->
         <?php include("../sidebar-over.php")?>
+            <script>
+        document.getElementById("nav-history").classList.add("current");
+    </script>
 
 
         <!--main body -->
@@ -217,6 +221,4 @@ if(isset($_SESSION['user_id']))
     </html>
     <?php
 }
-else
-	echo "<script>alert('Please login')</script>";
 ?>

@@ -24,7 +24,7 @@
     background-color: white;
     margin: 10% auto;
     padding: 20px;
-    width: 70%;
+    width: 85%;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
     animation-name: modal;
     animation-duration: 1s;
@@ -145,4 +145,15 @@ closeBtn:focus {
 .btn-arrow-left:after {
     /* hide arrow tails background */
     background-color: white;
+}
+
+
+@media (min-width: 800px) {
+    .modal {
+        margin-left: 9%;
+    }
+    
+    .modal-content{
+        width: 70%;
+    }
 }

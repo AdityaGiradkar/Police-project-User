@@ -9,6 +9,7 @@
 
 	function openModal() {
 		modal.style.display = 'block';
+        
 
 	}
 

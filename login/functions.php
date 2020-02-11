@@ -11,6 +11,13 @@ function ifItIsMethod($method=null){
     return false;
 
 }
+function redirect($location){
+
+
+    header("Location:" . $location);
+    exit;
+
+}
 
 
 
@@ -71,7 +78,7 @@ function ifItIsMethod($method=null){
 		  $_SESSION['city'] = $city ;
 
 					if($db_user_role=="admin"){
-             redirect("../leave");
+             redirect("../admin/new_app/list.php");
 			}
 			else
 				redirect("../User_end/profile/profile.php");

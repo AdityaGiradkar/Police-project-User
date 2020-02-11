@@ -1,8 +1,9 @@
 function showQuarter($city) {
      if($city != 0)
          {
-             alert($city);
-             document.getElementById('quarter').style.display = "block";
+             
+              window.location.href="waiting.php?city="+$city;
+			 alert($city);
          }
      else
          {

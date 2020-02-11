@@ -28,6 +28,7 @@ session_start();?>
 
     <!--fontawsome link-->
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js//all.js"></script>
+    <link rel="icon" href="../images/icon.ico">
 </head>
 
 <body>
