@@ -21,9 +21,14 @@
         <li>
             <a class="sidenav-list" id="nav-remarked" href="../remarked_app/list.php">Remarked Application</a>
         </li>
+        
+     
+
+      
         <li>
             <a class="sidenav-list" id="nav-status" href="../tracking/list.php">Application Status</a>
         </li>
+  
         <li>
             <a class="sidenav-list" href="#historySubmenu" data-toggle="collapse">History<i class="fas fa-chevron-down" style="margin-left: 100px;"></i></a>
             <ul class="collapse list-unstyled" id="historySubmenu">

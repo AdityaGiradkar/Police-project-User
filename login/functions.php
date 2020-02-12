@@ -87,8 +87,16 @@ function redirect($location){
  
 else
 {
-	 echo "<script>alert('Wrong Credentials entered!')</script>";
-
+	 echo "<script>
+                alert('Wrong Credentials entered!');
+                window.location.replace(\"../index.html\");
+           </script>";
+    ?>
+<h3><p>Wrong Credentials.</p></h3>
+          <p>If you are not redirect automaticly please click <a href="../index.html">Here</a></p>
+          <?php
+    
+   // header("location: ../index.html");
            return false;
 	
 }

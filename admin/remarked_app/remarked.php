@@ -10,6 +10,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
 
     <!--extenal css link-->
     <link rel="stylesheet" href="remarked.css">
@@ -75,13 +78,23 @@
 						
 					
 					?>
+
 <body>
     <?php include("../sidebar-over.php")?>
+    <script>
+        document.getElementById("nav-remarked").classList.add("current");
+
+    </script>
 
     <!--main body-->
     <div id="main">
 
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()" id="main-content">&#9776; open</span>
+        <div class="sticky">
+            <button type="button" id="sidebarCollapse" class="btn btn-info">
+                <i class="fas fa-align-left"></i>
+                <span>Toggle Sidebar</span>
+            </button>
+        </div>
 
 
         <section>
@@ -131,7 +144,7 @@
                         Signature…
 
                     </div>
-                        <table class="table table-bordered">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">Sr. No.</th>
@@ -139,9 +152,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                    
-                 
-						<?php 
+
+
+                            <?php 
 						$remark_query="SELECT * FROM `remarks` WHERE `applicant_id`='$applicantid' ORDER BY `post_id` ASC";
 						$run=mysqli_query($con,$remark_query);
 						$row_count=mysqli_num_rows($run);
@@ -152,22 +165,22 @@
 							$remark=$row['remark'];
 							
 						?>
-						
-                        <tr>
-                                <th scope="row"><?php echo $post; ?>.</th>
+
+                            <tr>
+                                <th scope="row" class="sr_no"><?php echo $post; ?>.</th>
                                 <td>
                                     <h5>A<?php echo $post; ?> </h5>
-                                    <br>
-                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $remark; ?></p>
+                                   
+                                    <p><?php echo $remark; ?></p>
                                 </td>
 
                             </tr>
-<?php 
+                            <?php 
 						}
 	?>
-						</tbody>
+                        </tbody>
                     </table>
-					 <div class="sign">
+                    <div class="sign">
                         <div class="row">
                             <div class="col-md-3">
                                 <center><br><br>
@@ -195,13 +208,13 @@
                             </div>
                         </div>
                     </div>
-					
-                   
 
-    
 
-               
-				<?php
+
+
+
+
+                    <?php
 				
 				
 				$qry1="SELECT * FROM `applicant` WHERE `id`='$applicantid'";
@@ -251,13 +264,13 @@
 				
 				
 		?>
-				<hr>
-					<?php if(!isset($_POST['allot']) AND $status=="Unapproved")
+                    <hr>
+                    <?php if(!isset($_POST['allot']) AND $status=="Unapproved")
 		{
 			?>
-		
-				
-				 <div id="q_allot" >
+
+
+                    <div id="q_allot">
                         <div id="q_form" style="display:block;">
                             <h5>1. Applicant Prefrences</h5>
 
@@ -280,21 +293,21 @@
                                 </tbody>
                             </table>
                             <br>
-							<form method="post" action="" enctype="multipart/form-data" >
-                            <h5>2. Allot Quarter</h5>
-                            <div class="row">
-                                <div class="col-md-12" id="select-area">
-                                    <select class="form-control" onchange="show_q(value)" name="area">
-                                        <option value="">Select Area</option>
-											<option value="<?php echo $area1; ?>"  <?php if(isset($_GET['city'])) if($_GET['area']==$area1){ ?> selected <?php }  ?>><?php echo $area1; ?></option>
-                                        <option value="<?php echo $area2; ?>"  <?php if($_GET['area']==$area2){ ?> selected <?php } ?>><?php echo $area2; ?></option>
-										 <option value="<?php echo $area3; ?>"  <?php if($_GET['area']==$area3){ ?> selected <?php } ?>><?php echo $area3; ?></option>
-										 <option value="<?php echo $area4; ?>" <?php if($_GET['area']==$area4){ ?> selected <?php } ?>><?php echo $area4; ?></option>
-                                    </select>
+                            <form method="post" action="" enctype="multipart/form-data">
+                                <h5>2. Allot Quarter</h5>
+                                <div class="row">
+                                    <div class="col-md-12" id="select-area">
+                                        <select class="form-control" onchange="show_q(value)" name="area">
+                                            <option value="">Select Area</option>
+                                            <option value="<?php echo $area1; ?>" <?php if(isset($_GET['city'])) if($_GET['area']==$area1){ ?> selected <?php }  ?>><?php echo $area1; ?></option>
+                                            <option value="<?php echo $area2; ?>" <?php if($_GET['area']==$area2){ ?> selected <?php } ?>><?php echo $area2; ?></option>
+                                            <option value="<?php echo $area3; ?>" <?php if($_GET['area']==$area3){ ?> selected <?php } ?>><?php echo $area3; ?></option>
+                                            <option value="<?php echo $area4; ?>" <?php if($_GET['area']==$area4){ ?> selected <?php } ?>><?php echo $area4; ?></option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <br>
-							<?php
+                                <br>
+                                <?php
 							if(isset($_GET['area'])){
 												$area_selected=$_GET['area'];
 												$qry1="SELECT * FROM `area` WHERE `name`='$area_selected'";
@@ -307,13 +320,13 @@
 												$select_run=mysqli_query($con,$select_quater);
 							}
 								?>
-								
-                            <div id="select_q" <?php if(isset($_GET['area'])) { 	?> style="display:block;" <?php  } else { ?>style="display:none;" <?php } ?>>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <select class="form-control" name="quater">
-											 <option value="1">Select quater</option>
-											<?php 
+
+                                <div id="select_q" <?php if(isset($_GET['area'])) { 	?> style="display:block;" <?php  } else { ?>style="display:none;" <?php } ?>>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <select class="form-control" name="quater">
+                                                <option value="1">Select quater</option>
+                                                <?php 
 											
 												
 												while($select_row=mysqli_fetch_assoc($select_run))
@@ -322,42 +335,42 @@
 												
 											
 											?>
-                                           
-                                            <option value="<?php echo $select_row['name']; ?>" ><?php echo $select_row['name']; ?></option>
-                                            	<?php
+
+                                                <option value="<?php echo $select_row['name']; ?>"><?php echo $select_row['name']; ?></option>
+                                                <?php
 												}
 												
 											?>
-                                        </select>
-                                    </div>
-								
-									
-                                    <div class="col-md-6">
-                                       <input type="text" name="room" >
+                                            </select>
+                                        </div>
+
+
+                                        <div class="col-md-6">
+                                            <input type="text" name="room">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-								
-                            <div class="Allot" style="padding: 5% 40%;">
-                                <input type="submit" class="btn btn-primary btn-block" name="allot"  value="allot" />
-                            </div>
-							</form>
+
+                                <div class="Allot" style="padding: 5% 40%;">
+                                    <input type="submit" class="btn btn-primary btn-block" name="allot" value="allot" />
+                                </div>
+                            </form>
                         </div>
-					 
-					 
-					
+
+
+
 
                         <!--After allot click below div will display-->
-					 <?php
+                        <?php
 									}
 										if( $status=="Approved")
 											{
 												
 						
 												?>
-											
+
                         <div id="selected_Q" style="display:block">
-                           <h5>Alloted Quater</h5>
+                            <h5>Alloted Quater</h5>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -375,24 +388,24 @@
                                 </tbody>
                             </table>
                         </div>
-					
-					
+
+
                     </div>
-				<?php 
+                    <?php 
 				}
 				}
 				?>
-				</div>
-					 </div>
-                <div class="print-btn">
-                    <input type="button" class="btn btn-primary btn-block" onclick="printDiv('printableArea')" value="print" />
                 </div>
-           
+            </div>
+            <div class="print-btn">
+                <input type="button" class="btn btn-primary btn-block" onclick="printDiv('printableArea')" value="print" />
+            </div>
+
 
         </section>
 
     </div>
-
+<!--
     <script>
         function printDiv(divName) {
             var printContents = document.getElementById(divName).innerHTML;
@@ -405,18 +418,21 @@
             document.body.innerHTML = originalContents;
         }
 
-    </script>
+    </script>-->
 
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
     <!--gobal js file link-->
     <script src="../user.js"></script>
-	<script src="remarked.js"></script>
+    <script src="remarked.js"></script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 </body>
 
 </html>

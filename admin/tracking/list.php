@@ -38,7 +38,7 @@
 	include("../sidebar-over.php");
 	include("../../db.php");
 	$postid=$_SESSION['post_id'];
-	$qry="SELECT * FROM `applicant` ";//fetch applicants whose not approved by a1
+	$qry="SELECT * FROM `applicant` ORDER BY `time` DESC ";//fetch applicants whose not approved by a1
 	$run=mysqli_query($con,$qry);
 	$rows=mysqli_num_rows($run);
     ?>

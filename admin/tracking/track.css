@@ -22,6 +22,10 @@
     background-color: rd;
 }
 
+.sr_no{
+    width: 40px;
+}
+
 .subject {
     padding: 2%;
     background-color: yelow;

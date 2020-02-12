@@ -149,11 +149,11 @@ if(isset($_SESSION['user_id']))
 						?>
 						
                         <tr>
-                                <th scope="row"><?php echo $post; ?>.</th>
+                                <th scope="row" class="sr_no"><?php echo $post; ?>.</th>
                                 <td>
                                     <h5>A<?php echo $post; ?> </h5>
-                                    <br>
-                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $remark; ?></p>
+                                    
+                                    <p><?php echo $remark; ?></p>
                                 </td>
 
 								</tr>

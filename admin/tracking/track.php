@@ -9,9 +9,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
-    
-        <!-- Scrollbar Custom CSS -->
+
+
+    <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
 
@@ -30,8 +30,8 @@
 
     <!--fontawsome link-->
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js//all.js"></script>
-    
-        <!--icon on the URL-->
+
+    <!--icon on the URL-->
     <link rel="icon" href="../images/icon.ico">
 </head>
 <?php
@@ -120,7 +120,7 @@
 
                     </div>
                     <hr>
-                     <table class="table table-bordered">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">Sr. No.</th>
@@ -128,7 +128,7 @@
                             </tr>
                         </thead>
                         <tbody>
-							      <?php 
+                            <?php 
 							$userid=$_SESSION['post_id'];
 							
 						$remark_query="SELECT * FROM `remarks` WHERE `applicant_id`='$applicantid' ORDER BY `post_id` ASC";
@@ -138,55 +138,54 @@
 							$post=$row['post_id'];
 							$remark=$row['remark'];
 							
-						?>     
-							  <tr>
-                                <th scope="row"><?php echo $post; ?>.</th>
+						?>
+                            <tr>
+                                <th scope="row" class="sr_no"><?php echo $post; ?>.</th>
                                 <td>
                                     <h5>A<?php echo $post; ?> </h5>
-                                    <br>
-                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $remark; ?></p>
-                                
 
-                           
+                                    <p id="remark1" style="display:block"><?php echo $remark; ?></p>
 
-						<?php if($post==$userid)
+
+
+
+                                    <?php if($post==$userid)
 						{
 							?>
-                        <button type="button" onclick="showEditor()" class="btn btn-primary btn-sm">Edit</button>
-									
-						<?php }
-						
-						?>
-								
-                   
-					
-                  
-                    <!--text editor-->
-                    <div id="remark-area" style="display:none;">
-                        <!--to send text area content to the data base refer to this link "https://youtu.be/_Mr0RVmHYF0"-->
-                        <form method="post" action="">
-                            <div>
-                                <label for="remark"><b>Remark</b></label>
-                                <textarea id="remark" name="remark"></textarea>
-                            </div>
-                            <input class="btn btn-primary active" type="submit" id="sub" name="submit" value="Add Remark">
-                            <button type="button" onclick="hideEditor()" class="btn btn-danger btn-sm">Cancel</button>
-                        </form>
-                    </div>
-									</td>
-						
-							</tr>
-							<?php
+                                    <button type="button" onclick="showEditor()" class="btn btn-primary btn-sm btn-edit">Edit</button>
+
+                 
+
+
+
+
+                                    <!--text editor-->
+                                    <div id="remark-area" style="display:none;">
+                                        <!--to send text area content to the data base refer to this link "https://youtu.be/_Mr0RVmHYF0"-->
+                                        <form method="post" action="">
+                                            <div>
+                                                <label for="remark"><b>New remark</b></label>
+                                                <textarea id="remark" name="remark"></textarea>
+                                            </div>
+                                            <input class="btn btn-primary active" type="submit" id="sub" name="submit" value="Add Remark">
+                                            <button type="button" onclick="hideEditor()" class="btn btn-danger btn-sm">Cancel</button>
+                                        </form>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <?php
 						}
+                        }
 							?>
-								  </tbody>
-						  </table>
-					
-							 </div>
-				
-                    </div>
-                    <!--text editor-->
-                   <?php
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+            <!--text editor-->
+            <?php
 					if(isset($_POST['submit']))
 					{
 						$remark=$_POST['remark'];
@@ -195,15 +194,15 @@
 						$query="UPDATE `remarks` SET `remark`='$remark' WHERE `post_id`='$userid' AND `applicant_id`='$applicantid'";
 						$run=mysqli_query($con,$query);
 						if($run){
-							echo "<script>alert('Remark updated successfully')</script>";
+							echo "<script>alert('Remark updated successfully');
+                                        window.location.replace(\"list.php\");</script>";
 						}
 					
 					}
 					?>
-                </div>
-            </div>
-			
-                   
+
+
+
 
         </section>
 
@@ -214,7 +213,7 @@
 
     <!--gobal js file link-->
     <script src="../user.js"></script>
-    
+
     <!--external js file-->
     <script src="track.js"></script>
 
@@ -225,10 +224,10 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
-        
-          <!-- jQuery Custom Scroller CDN -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 </body>
 
 </html>

@@ -53,10 +53,10 @@ if(isset($_SESSION['user_id']))
                 </button>
             </div>
 
-            <h2 class="form-heading" style="text-align: center; padding-bottom: 3%; padding-top: 2%">History</h2>
+            <h2 class="form-heading" style="text-align: center; padding-bottom: 1%; padding-top: 2%">History</h2>
             <hr>
 
-            <br>
+       
             <div class="container">
                 <div class="list-group heading">
                     <?php

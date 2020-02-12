@@ -1,6 +1,7 @@
   function printDiv(divName) {
-      document.getElementById("q_form").style.display = "none";
-      document.getElementById("selected_Q").style.display = "none";
+      alert(divName);
+      //document.getElementById("q_form").style.display = "none";
+      //document.getElementById("selected_Q").style.display = "none";
             var printContents = document.getElementById(divName).innerHTML;
             var originalContents = document.body.innerHTML;
 
@@ -9,9 +10,9 @@
             window.print();
 
             document.body.innerHTML = originalContents;
-       document.getElementById("q_form").style.display = "block";
-      // document.getElementById("selected_Q").style.display = "block";
-        }
+       //document.getElementById("q_form").style.display = "block";
+       //document.getElementById("selected_Q").style.display = "block";
+}
 
 
 function show_q($area){

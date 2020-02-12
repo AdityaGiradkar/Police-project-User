@@ -141,7 +141,7 @@
 						?>
 
                             <tr>
-                                <th scope="row"><?php echo $post; ?>.</th>
+                                <th scope="row" class="sr_no"><?php echo $post; ?>.</th>
                                 <td>
                                     <h5>A<?php echo $post; ?> </h5>
                                     <br>
@@ -152,36 +152,37 @@
                             <?php 
 						}
 	?>
-                     
-                    <tr>
-                    <th scope="row"><?php echo $_SESSION['post_id']?>.</th>
-                    <td>
-                    <!--for remark-->
-                    <div id="remark-area">
-                        <!--to send text area content to the data base refer to this link "https://youtu.be/_Mr0RVmHYF0"-->
-                        <form method="post" action="">
-                            <div>
-                                <label for="remark"><b>Remark</b></label>
-                                <textarea id="remark" name="remark" style=""></textarea>
-                                <div id="givenRemark" style="display:none"></div>
-                            </div>
 
-                            <input class="btn btn-primary active" type="submit" id="sub" name="submit" onsubmit="showTextContent()" value="Add Remark">
-                        </form>
-                    </div>
-                        </td>
+                            <tr>
+                                <th scope="row"><?php echo $_SESSION['post_id']?>.</th>
+                                <td>
+                                    <!--for remark-->
+                                    <div id="remark-area" style="display:block">
+                                        <!--to send text area content to the data base refer to this link "https://youtu.be/_Mr0RVmHYF0"-->
+                                        <form method="post" action="" onsubmit="showTextContent()">
+                                            <div>
+                                                <label for="remark"><b><?php echo $_SESSION['post']?></b></label>
+                                                <textarea id="remark" name="remark" style=""></textarea>
+
+                                            </div>
+
+                                            <input class="btn btn-primary active" type="submit" id="sub" name="submit" value="Add Remark">
+                                        </form>
+                                    </div>
+                                    <p id="showRemark"></p>
+                                </td>
                             </tr>
-                    
-                       </tbody>
+
+                        </tbody>
                     </table>
-                    
-                    
+
+
                 </div>
 
             </div>
-</section>
-    
-    <?php 
+        </section>
+
+        <?php 
 			if(isset($_POST['submit']))
 			{
 				$userid=$_SESSION['user_id'];
@@ -197,23 +198,29 @@
 			$run1=mysqli_query($con,$qry1);
 				if($run1)
 				{
-					echo "<script>alert('remark added successfully')</script>";
-				}
+					echo "<script>alert('remark added successfully');
+                                    window.location.replace(\"list.php\");
+                          </script>";
+                }
 			}
 
         ?>
     </div>
 
+<!--
+
+    <script>
+        function showTextContent() {
+            alert("sucess");
+            var remark = tinyMCE.activeEditor.getContent({format : 'raw'});
+            alert(remark);
+            document.getElementById("remark-area").style.display = "none";
+            document.getElementById("showRemark").innerHTML = remark;
 
 
-   <script>
-    
-        function showTextContent(){
-            var remark = document.getElementById("remark").value;
-            
         }
-    
-    </script>
+
+    </script>-->
 
 
 

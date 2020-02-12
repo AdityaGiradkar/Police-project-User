@@ -25,6 +25,10 @@
     background-color: yelow;
 }
 
+.sr_no{
+    width: 40px;
+}
+
 .main-body{
     padding: 2%;
     background-color: blu;

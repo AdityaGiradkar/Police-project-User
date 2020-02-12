@@ -32,6 +32,10 @@
     text-align: justify;
 }
 
+.sr_no{
+    width: 40px;
+}
+
 .end {
     padding: 2%;
     background-color: gren;
