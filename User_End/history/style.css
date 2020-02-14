@@ -147,6 +147,10 @@ closeBtn:focus {
     background-color: white;
 }
 
+.list-group-item{
+    position: static;
+}
+
 
 @media (min-width: 800px) {
     .modal {

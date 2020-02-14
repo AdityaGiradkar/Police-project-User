@@ -1,4 +1,6 @@
-<?php include("../../db.php"); ?>
+<?
+session_start();
+php include("../../db.php"); ?>
 <!doctype html>
 <html lang="en">
 

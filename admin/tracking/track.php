@@ -149,10 +149,10 @@
 
 
 
-                                    <?php if($post==$userid)
-						{
-							?>
-                                    <button type="button" onclick="showEditor()" class="btn btn-primary btn-sm btn-edit">Edit</button>
+                     <?php if($post==$userid)
+	                  {
+                    ?>
+                                    <button type="button" onclick="showEditor()" class="btn btn-primary btn-sm">Edit</button>
 
                  
 
@@ -171,11 +171,12 @@
                                             <button type="button" onclick="hideEditor()" class="btn btn-danger btn-sm">Cancel</button>
                                         </form>
                                     </div>
+                                    <?php } ?>
                                 </td>
 
                             </tr>
                             <?php
-						}
+						
                         }
 							?>
                         </tbody>
